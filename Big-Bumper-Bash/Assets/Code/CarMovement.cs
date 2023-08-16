@@ -1,53 +1,65 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CarMovement : MonoBehaviour
 {
-    public float acceleration = 5.0f;
-    public float maxSpeed = 15.0f;
-    public float brakingDeceleration = 20.0f;
-    public float turnSpeed = 80.0f;
+    private float m_horizontalInput;
+    private float m_verticalInput;
+    private float m_steeringAngle;
 
-    private float currentSpeed = 0.0f;
-    private float currentTurnSpeed = 0.0f;
+    public WheelCollider colliderFrontLeft, colliderFrontRight;
+    public WheelCollider colliderBackLeft, colliderBackRight;
+    public Transform wheelFrontLeft, wheelFrontRight;
+    public Transform wheelBackLeft, wheelBackRight;
+    public float maxSteerAngle = 30;
+    public float motorForce = 1500;
 
-    private void Update()
+    Vector3 pos;
+    Quaternion quat;
+
+    private void FixedUpdate()
     {
-        float verticalInput = Input.GetAxis("Vertical");
-        float horizontalInput = Input.GetAxis("Horizontal");
-
-        HandleAccelerationAndBraking(verticalInput);
-        UpdateMovement(verticalInput);
-        UpdateTurning(verticalInput, horizontalInput);
+        GetInput();
+        Steer();
+        Accelerate();
+        UpdateWheelsPositions();
+    }
+    public void GetInput()
+    {
+        m_horizontalInput = Input.GetAxis("Horizontal");
+        m_verticalInput = Input.GetAxis("Vertical");
     }
 
-    private void HandleAccelerationAndBraking(float verticalInput)
+    private void Steer()
     {
-        if (verticalInput > 0)
-        {
-            currentSpeed = Mathf.MoveTowards(currentSpeed, maxSpeed, acceleration * Time.deltaTime);
-        }
-        else if (verticalInput < 0)
-        {
-            currentSpeed = Mathf.MoveTowards(currentSpeed, -maxSpeed * 0.5f, brakingDeceleration * Time.deltaTime);
-        }
-    }
-    
-    private void UpdateMovement(float verticalInput)
-    {
-        transform.Translate(Vector3.forward * currentSpeed * Time.deltaTime);
+        m_steeringAngle = maxSteerAngle * m_horizontalInput;
+        colliderFrontLeft.steerAngle = m_steeringAngle;
+        colliderFrontRight.steerAngle = m_steeringAngle;
     }
 
-    private void UpdateTurning(float verticalInput, float horizontalInput)
+    private void Accelerate()
     {
-        if (Mathf.Abs(verticalInput) > 0 || Mathf.Abs(horizontalInput) > 0)
-        {
-            currentTurnSpeed = horizontalInput * turnSpeed * currentSpeed / maxSpeed;
-        }
-        else
-        {
-            currentTurnSpeed = 0.0f;
-        }
+        colliderFrontLeft.motorTorque = m_verticalInput * motorForce;
+        colliderFrontRight.motorTorque = m_verticalInput * motorForce;
+    }
 
-        transform.Rotate(Vector3.up * currentTurnSpeed * Time.deltaTime);
+    private void UpdateWheelsPositions()
+    {
+        UpdateWheelPosition(colliderFrontLeft, wheelFrontLeft);
+        UpdateWheelPosition(colliderFrontRight, wheelFrontRight);
+        UpdateWheelPosition(colliderBackLeft, wheelBackLeft);
+        UpdateWheelPosition(colliderBackRight, wheelBackRight);
+    }
+
+    private void UpdateWheelPosition(WheelCollider collider, Transform transform)
+    {
+        pos = transform.position;
+        quat = transform.rotation;
+
+        collider.GetWorldPose(out pos, out quat);
+
+        transform.position = pos;
+        transform.rotation = quat;
     }
 }
