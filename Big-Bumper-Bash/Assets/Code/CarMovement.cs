@@ -18,9 +18,13 @@ public class CarMovement : MonoBehaviour
     Vector3 pos;
     Quaternion quat;
 
-    private void FixedUpdate()
+    private void Update()
     {
         GetInput();
+    }
+
+    private void FixedUpdate()
+    {
         Steer();
         Accelerate();
         UpdateWheelsPositions();
