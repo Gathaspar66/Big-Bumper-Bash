@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CarChoiceScript : MonoBehaviour
 {
+    public Button defaultSelected;
     public GameObject car1Button, car2Button, backButton;
     public GameObject backMenu;
 
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
@@ -19,15 +20,14 @@ public class CarChoiceScript : MonoBehaviour
 
     }
 
-    public void PressCar1()
+    private void OnEnable()
     {
-        print("starting game - car1");
-        //gameObject.SetActive(false);
+        defaultSelected.GetComponent<Button>().Select();
     }
 
-    public void PressCar2()
+    public void PressCar(string car = "no car chosen")
     {
-        print("starting game - car2");
+        print("starting game - car choice: " + car);
         //gameObject.SetActive(false);
     }
 

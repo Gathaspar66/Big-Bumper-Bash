@@ -323,6 +323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51f54da32b1e1224c9877fc3352eaf11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultSelected: {fileID: 530630023}
   backButton: {fileID: 530630021}
   backMenu: {fileID: 1994917066}
 --- !u!1 &251031660
@@ -378,10 +379,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 1326857847}
+    m_SelectOnDown: {fileID: 1377513520}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -411,14 +412,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1310337927}
         m_TargetAssemblyTypeName: CarChoiceScript, Assembly-CSharp
-        m_MethodName: PressCar1
-        m_Mode: 1
+        m_MethodName: PressCar
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: car 1
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &251031663
@@ -647,10 +648,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 677072445}
+    m_SelectOnDown: {fileID: 1652020325}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -781,10 +782,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 454383798}
+    m_SelectOnDown: {fileID: 1016302735}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -814,14 +815,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1616855214}
         m_TargetAssemblyTypeName: MapChoiceScript, Assembly-CSharp
-        m_MethodName: PressMap1
-        m_Mode: 1
+        m_MethodName: PressMap
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: map1
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &357088930
@@ -1009,10 +1010,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 1016302735}
+    m_SelectOnDown: {fileID: 357088929}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -1653,10 +1654,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 1652020325}
+    m_SelectOnDown: {fileID: 307962227}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -2167,14 +2168,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1616855214}
         m_TargetAssemblyTypeName: MapChoiceScript, Assembly-CSharp
-        m_MethodName: PressMap2
-        m_Mode: 1
+        m_MethodName: PressMap
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: map 2
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1016302736
@@ -2659,6 +2660,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc19943c2d8614c4e8b220e058520e66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultSelected: {fileID: 251031662}
   car1Button: {fileID: 251031660}
   car2Button: {fileID: 1377513518}
   backButton: {fileID: 1326857845}
@@ -2716,10 +2718,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 1377513520}
+    m_SelectOnDown: {fileID: 251031662}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -2809,7 +2811,6 @@ GameObject:
   - component: {fileID: 1336423907}
   - component: {fileID: 1336423906}
   - component: {fileID: 1336423905}
-  - component: {fileID: 1336423908}
   m_Layer: 5
   m_Name: Exit
   m_TagString: Untagged
@@ -2932,18 +2933,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1336423903}
   m_CullTransparentMesh: 1
---- !u!114 &1336423908
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1336423903}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d6577ea6b9caff4389e36170b4aef22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1377513518
 GameObject:
   m_ObjectHideFlags: 0
@@ -3030,14 +3019,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1310337927}
         m_TargetAssemblyTypeName: CarChoiceScript, Assembly-CSharp
-        m_MethodName: PressCar2
-        m_Mode: 1
+        m_MethodName: PressCar
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: car 2
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1377513521
@@ -3265,6 +3254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3712b03a277b854284133db56b586b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultSelected: {fileID: 307962227}
   freeplayButton: {fileID: 307962225}
   raceButton: {fileID: 1652020323}
   backButton: {fileID: 677072443}
@@ -3592,6 +3582,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2af696a5c0b23d9499d82651d5379bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultSelected: {fileID: 357088929}
   map1Button: {fileID: 357088927}
   map2Button: {fileID: 1016302733}
   backButton: {fileID: 454383796}
@@ -4542,6 +4533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1c420ace78d335499fa8eab983254b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultSelected: {fileID: 1523098977}
   playButton: {fileID: 1523098975}
   optionsButton: {fileID: 925408159}
   exitButton: {fileID: 1336423903}
