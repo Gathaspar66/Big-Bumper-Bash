@@ -25,19 +25,19 @@ public class PlayMenuScript : MonoBehaviour
         defaultSelected.GetComponent<Button>().Select();
     }
 
-    public void PressFreeplay()
+    public void OnFreeplayButtonPressed()
     {
         freeplayMenu.SetActive(true);
         gameObject.SetActive(false);
     }
 
-    public void PressRace()
+    public void OnRaceButtonPressed()
     {
         raceMenu.SetActive(true);
         gameObject.SetActive(false);
     }
 
-    public void PressBack()
+    public void OnBackButtonPressed()
     {
         backMenu.SetActive(true);
         gameObject.SetActive(false);

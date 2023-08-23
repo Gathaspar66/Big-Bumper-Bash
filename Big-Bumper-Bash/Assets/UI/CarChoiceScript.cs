@@ -25,13 +25,11 @@ public class CarChoiceScript : MonoBehaviour
         defaultSelected.GetComponent<Button>().Select();
     }
 
-    public void PressCar(string car = "no car chosen")
+    public void OnChooseCarButtonPressed(EnumCarChoice car)
     {
-        print("starting game - car choice: " + car);
-        //gameObject.SetActive(false);
     }
 
-    public void PressBack()
+    public void OnBackButtonPressed()
     {
         backMenu.SetActive(true);
         gameObject.SetActive(false);

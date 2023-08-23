@@ -25,7 +25,7 @@ public class OptionsMenuScript : MonoBehaviour
         defaultSelected.GetComponent<Button>().Select();
     }
 
-    public void PressBack()
+    public void OnBackButtonPressed()
     {
         backMenu.SetActive(true);
         gameObject.SetActive(false);

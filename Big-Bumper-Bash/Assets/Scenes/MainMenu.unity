@@ -338,6 +338,7 @@ GameObject:
   - component: {fileID: 251031664}
   - component: {fileID: 251031663}
   - component: {fileID: 251031662}
+  - component: {fileID: 251031665}
   m_Layer: 5
   m_Name: car1
   m_TagString: Untagged
@@ -412,11 +413,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1310337927}
         m_TargetAssemblyTypeName: CarChoiceScript, Assembly-CSharp
-        m_MethodName: PressCar
-        m_Mode: 5
+        m_MethodName: OnChooseCarButtonPressed
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 251031665}
+          m_ObjectArgumentAssemblyTypeName: EnumCarChoice, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: car 1
@@ -460,6 +461,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 251031660}
   m_CullTransparentMesh: 1
+--- !u!114 &251031665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 251031660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85e380d97ece76c43b215e44b96ecf09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carChoice: 0
 --- !u!1 &257792733
 GameObject:
   m_ObjectHideFlags: 0
@@ -681,7 +695,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1470558780}
         m_TargetAssemblyTypeName: PlayMenuScript, Assembly-CSharp
-        m_MethodName: PressFreeplay
+        m_MethodName: OnFreeplayButtonPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -741,6 +755,7 @@ GameObject:
   - component: {fileID: 357088931}
   - component: {fileID: 357088930}
   - component: {fileID: 357088929}
+  - component: {fileID: 357088932}
   m_Layer: 5
   m_Name: map1
   m_TagString: Untagged
@@ -815,11 +830,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1616855214}
         m_TargetAssemblyTypeName: MapChoiceScript, Assembly-CSharp
-        m_MethodName: PressMap
-        m_Mode: 5
+        m_MethodName: OnMapButtonPressed
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 357088932}
+          m_ObjectArgumentAssemblyTypeName: EnumMapChoice, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: map1
@@ -863,6 +878,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 357088927}
   m_CullTransparentMesh: 1
+--- !u!114 &357088932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357088927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe0deb67c904e2240b35b875468d5c7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapChoice: 0
 --- !u!1 &375440312
 GameObject:
   m_ObjectHideFlags: 0
@@ -1043,7 +1071,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1616855214}
         m_TargetAssemblyTypeName: MapChoiceScript, Assembly-CSharp
-        m_MethodName: PressBack
+        m_MethodName: OnBackButtonPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1177,7 +1205,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 62688796}
         m_TargetAssemblyTypeName: OptionsMenuScript, Assembly-CSharp
-        m_MethodName: PressBack
+        m_MethodName: OnBackButtonPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1687,7 +1715,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1470558780}
         m_TargetAssemblyTypeName: PlayMenuScript, Assembly-CSharp
-        m_MethodName: PressBack
+        m_MethodName: OnBackButtonPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2034,7 +2062,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1994917068}
         m_TargetAssemblyTypeName: MainMenuScript, Assembly-CSharp
-        m_MethodName: PressOptions
+        m_MethodName: OnOptionsButtonPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2094,6 +2122,7 @@ GameObject:
   - component: {fileID: 1016302737}
   - component: {fileID: 1016302736}
   - component: {fileID: 1016302735}
+  - component: {fileID: 1016302738}
   m_Layer: 5
   m_Name: map2
   m_TagString: Untagged
@@ -2168,11 +2197,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1616855214}
         m_TargetAssemblyTypeName: MapChoiceScript, Assembly-CSharp
-        m_MethodName: PressMap
-        m_Mode: 5
+        m_MethodName: OnMapButtonPressed
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1016302738}
+          m_ObjectArgumentAssemblyTypeName: EnumMapChoice, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: map 2
@@ -2216,6 +2245,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1016302733}
   m_CullTransparentMesh: 1
+--- !u!114 &1016302738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016302733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe0deb67c904e2240b35b875468d5c7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapChoice: 1
 --- !u!1 &1045074539
 GameObject:
   m_ObjectHideFlags: 0
@@ -2751,7 +2793,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1310337927}
         m_TargetAssemblyTypeName: CarChoiceScript, Assembly-CSharp
-        m_MethodName: PressBack
+        m_MethodName: OnBackButtonPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2885,7 +2927,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1994917068}
         m_TargetAssemblyTypeName: MainMenuScript, Assembly-CSharp
-        m_MethodName: PressExit
+        m_MethodName: OnExitButtonPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2945,6 +2987,7 @@ GameObject:
   - component: {fileID: 1377513522}
   - component: {fileID: 1377513521}
   - component: {fileID: 1377513520}
+  - component: {fileID: 1377513523}
   m_Layer: 5
   m_Name: car2
   m_TagString: Untagged
@@ -3019,11 +3062,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1310337927}
         m_TargetAssemblyTypeName: CarChoiceScript, Assembly-CSharp
-        m_MethodName: PressCar
-        m_Mode: 5
+        m_MethodName: OnChooseCarButtonPressed
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1377513523}
+          m_ObjectArgumentAssemblyTypeName: EnumCarChoice, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: car 2
@@ -3067,6 +3110,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1377513518}
   m_CullTransparentMesh: 1
+--- !u!114 &1377513523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1377513518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85e380d97ece76c43b215e44b96ecf09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carChoice: 1
 --- !u!1 &1421894869
 GameObject:
   m_ObjectHideFlags: 0
@@ -3347,7 +3403,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1994917068}
         m_TargetAssemblyTypeName: MainMenuScript, Assembly-CSharp
-        m_MethodName: PressPlay
+        m_MethodName: OnPlayButtonPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3674,7 +3730,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1470558780}
         m_TargetAssemblyTypeName: PlayMenuScript, Assembly-CSharp
-        m_MethodName: PressRace
+        m_MethodName: OnRaceButtonPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

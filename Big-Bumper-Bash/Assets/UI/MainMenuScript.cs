@@ -25,19 +25,19 @@ public class MainMenuScript : MonoBehaviour
         defaultSelected.GetComponent<Button>().Select();
     }
 
-    public void PressPlay()
+    public void OnPlayButtonPressed()
     {
         playMenu.SetActive(true);
         gameObject.SetActive(false);
     }
 
-    public void PressOptions()
+    public void OnOptionsButtonPressed()
     {
         optionsMenu.SetActive(true);
         gameObject.SetActive(false);
     }
 
-    public void PressExit()
+    public void OnExitButtonPressed()
     {
         Application.Quit();
     }

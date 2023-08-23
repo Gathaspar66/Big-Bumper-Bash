@@ -25,14 +25,13 @@ public class MapChoiceScript : MonoBehaviour
         defaultSelected.GetComponent<Button>().Select();
     }
 
-    public void PressMap(string map = "no map chosen")
+    public void OnMapButtonPressed(EnumMapChoice map)
     {
-        print("map choice: " + map);
         carChoiceMenu.SetActive(true);
         gameObject.SetActive(false);
     }
 
-    public void PressBack()
+    public void OnBackButtonPressed()
     {
         backMenu.SetActive(true);
         gameObject.SetActive(false);
