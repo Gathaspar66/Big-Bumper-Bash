@@ -4,15 +4,52 @@ using UnityEngine;
 
 public class CheckpointManagerScript : MonoBehaviour
 {
-    public static CheckpointManagerScript CheckpointManager;
+    public static CheckpointManagerScript checkpointManager { get; private set; }
 
-    public List<GameObject> checkpoints= new();
+    public List<GameObject> checkpoints = new();
     int currentCheckpoint = 0;
 
-    // Start is called before the first frame update
+    private void Awake()
+    {
+        if (checkpointManager != null && checkpointManager != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            checkpointManager = this;
+        }
+    }
+
     void Start()
     {
-        CheckpointManager = this;
+        SetupCheckpoints();
+    }
+
+    public void OnCheckpointReached()
+    {
+        if (IsLastCheckpointReached())
+        {
+            OnRaceFinished();
+        }
+        else
+        {
+            currentCheckpoint++;
+            checkpoints[currentCheckpoint].SetActive(true);
+        }
+    }
+
+    bool IsLastCheckpointReached()
+    {
+        if (currentCheckpoint == checkpoints.Count - 1)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    void SetupCheckpoints()
+    {
         if (checkpoints.Count > 0)
         {
             foreach (GameObject checkpoint in checkpoints)
@@ -23,26 +60,9 @@ public class CheckpointManagerScript : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnRaceFinished()
     {
-        
-    }
-
-    public void CheckpointReached()
-    {
-        if (currentCheckpoint == checkpoints.Count - 1)
-        {
-            RaceFinished();
-        }
-        else
-        {
-            currentCheckpoint++;
-            checkpoints[currentCheckpoint].SetActive(true);
-        }
-    }
-
-    void RaceFinished()
-    {
+        //TODO
+        //initiate race ending e.g. disabling vehicle input, saving high score
     }
 }

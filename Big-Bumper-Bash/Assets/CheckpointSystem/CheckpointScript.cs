@@ -4,21 +4,9 @@ using UnityEngine;
 
 public class CheckpointScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
-        CheckpointManagerScript.CheckpointManager.CheckpointReached();
+        CheckpointManagerScript.checkpointManager.OnCheckpointReached();
         gameObject.SetActive(false);
     }
 }
