@@ -41,11 +41,7 @@ public class CheckpointManagerScript : MonoBehaviour
 
     bool IsLastCheckpointReached()
     {
-        if (currentCheckpoint == checkpoints.Count - 1)
-        {
-            return true;
-        }
-        return false;
+        return currentCheckpoint == checkpoints.Count - 1;
     }
 
     void SetupCheckpoints()
