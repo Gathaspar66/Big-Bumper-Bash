@@ -24,6 +24,7 @@ public class CheckpointManagerScript : MonoBehaviour
     void Start()
     {
         SetupCheckpoints();
+        GameManager.gameManager.Siema();
     }
 
     public void OnCheckpointReached()

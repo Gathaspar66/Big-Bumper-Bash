@@ -4,13 +4,7 @@ using UnityEngine;
 
 public class PressAnyKeyScript : MonoBehaviour
 {
-    public GameObject mainMenu;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject mainMenu, logoObject;
 
     // Update is called once per frame
     void Update()
@@ -19,6 +13,7 @@ public class PressAnyKeyScript : MonoBehaviour
         {
             mainMenu.SetActive(true);
             gameObject.SetActive(false);
+            logoObject.GetComponent<LogoScript>().Activate();
         }
     }
 }
