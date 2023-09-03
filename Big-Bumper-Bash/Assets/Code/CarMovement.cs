@@ -7,16 +7,32 @@ public class CarMovement : MonoBehaviour
     private float m_horizontalInput;
     private float m_verticalInput;
     private float m_steeringAngle;
+    private Vector3 pos;
+    private Quaternion quat;
 
-    public WheelCollider colliderFrontLeft, colliderFrontRight;
-    public WheelCollider colliderBackLeft, colliderBackRight;
-    public Transform wheelFrontLeft, wheelFrontRight;
-    public Transform wheelBackLeft, wheelBackRight;
+    [Header("Wheels colliders")]
+    public WheelCollider colliderFrontLeft;
+    public WheelCollider colliderFrontRight;
+    public WheelCollider colliderBackLeft;
+    public WheelCollider colliderBackRight;
+
+    [Header("Wheels")]
+    public Transform wheelFrontLeft;
+    public Transform wheelFrontRight;
+    public Transform wheelBackLeft;
+    public Transform wheelBackRight;
+
+    [Header("Vehicle settings")]
     public float maxSteerAngle = 30;
     public float motorForce = 1500;
 
-    Vector3 pos;
-    Quaternion quat;
+    public Vector3 centerOfMass;
+    public Rigidbody carRigidBody;
+
+    void Start()
+    {
+        SetupCenterOfMass();
+    }
 
     private void Update()
     {
@@ -29,6 +45,13 @@ public class CarMovement : MonoBehaviour
         Accelerate();
         UpdateWheelsPositions();
     }
+
+    private void SetupCenterOfMass()
+    {
+        carRigidBody = GetComponent<Rigidbody>();
+        carRigidBody.centerOfMass = centerOfMass;
+    }
+
     public void GetInput()
     {
         m_horizontalInput = Input.GetAxis("Horizontal");
