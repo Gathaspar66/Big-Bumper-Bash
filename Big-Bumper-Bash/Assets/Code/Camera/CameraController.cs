@@ -4,7 +4,7 @@ public class CameraController : MonoBehaviour
 {
     public Transform targetObject;
     public Vector3 offset;
-    public float followSpeed=10.0f;
+    public float followSpeed = 10.0f;
     private Vector3 lookDirection;
     private Quaternion targetRotation;
     private Vector3 targetPosition;
@@ -32,8 +32,8 @@ public class CameraController : MonoBehaviour
     private void MoveToTarget()
     {
         targetPosition = targetObject.position +
-                 targetObject.forward * offset.z +
-                 Vector3.up * offset.y;
+                         targetObject.forward * offset.z +
+                         Vector3.up * offset.y;
 
         followSpeed = targetObject.GetComponent<Rigidbody>().velocity.magnitude;
 
