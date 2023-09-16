@@ -11,7 +11,7 @@ public class PressAnyKeyScript : MonoBehaviour
     {
         if (Input.anyKeyDown)
         {
-            mainMenu.SetActive(true);
+            MenuManager.menuManager.ChangeMenu(mainMenu);
             gameObject.SetActive(false);
             logoObject.GetComponent<LogoScript>().Activate();
         }

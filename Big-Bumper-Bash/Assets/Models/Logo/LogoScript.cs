@@ -148,7 +148,6 @@ public class LogoScript : MonoBehaviour
             rb.isKinematic = true;
             letterPart.localRotation = Quaternion.Euler(-90, 0, 0);
             letterPartsStartingPositions.Add(letterPart.localPosition);
-            print(letterPart.name + " " + letterPart.localPosition);
         }
     }
 

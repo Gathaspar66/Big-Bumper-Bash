@@ -2,15 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public enum Car
 {
-    CAR1,
-    CAR2
+    CAR1_OGIER,
+    CAR2_UNIKACZ
 }
 public enum Map
 {
     MAP1,
     MAP2
+}
+
+public enum GameMode
+{
+    RACE,
+    FREEPLAY
 }
 
 public enum CarFunction
@@ -24,4 +31,13 @@ public enum BashLettersState
     PULSE,
     RAGDOLL,
     RETURN
+}
+public enum Widget
+{
+    ARROW,
+    SPEEDOMETER,
+    MINIMAP,
+    STOPWATCH,
+    LAPCOUNTER,
+    COUNTDOWN
 }

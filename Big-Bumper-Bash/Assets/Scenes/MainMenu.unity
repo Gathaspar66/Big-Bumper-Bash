@@ -301,7 +301,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 62688795}
-  - component: {fileID: 62688796}
   m_Layer: 5
   m_Name: OptionsMenu
   m_TagString: Untagged
@@ -331,21 +330,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &62688796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 62688794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51f54da32b1e1224c9877fc3352eaf11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultSelected: {fileID: 530630023}
-  backButton: {fileID: 530630021}
-  backMenu: {fileID: 1994917066}
 --- !u!1 &251031660
 GameObject:
   m_ObjectHideFlags: 0
@@ -431,16 +415,28 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1310337927}
-        m_TargetAssemblyTypeName: CarChoiceScript, Assembly-CSharp
-        m_MethodName: OnChooseCarButtonPressed
+      - m_Target: {fileID: 670080705}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: ChooseCar
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 251031665}
           m_ObjectArgumentAssemblyTypeName: EnumCarChoice, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: car 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 670080705}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: LoadRace
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &251031663
@@ -641,6 +637,7 @@ GameObject:
   - component: {fileID: 307962229}
   - component: {fileID: 307962228}
   - component: {fileID: 307962227}
+  - component: {fileID: 307962230}
   m_Layer: 5
   m_Name: Freeplay
   m_TagString: Untagged
@@ -713,13 +710,25 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1470558780}
-        m_TargetAssemblyTypeName: PlayMenuScript, Assembly-CSharp
-        m_MethodName: OnFreeplayButtonPressed
-        m_Mode: 1
+      - m_Target: {fileID: 670080705}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: ChooseGameMode
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 307962230}
+          m_ObjectArgumentAssemblyTypeName: EnumModeChoice, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 670080705}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: ChangeMenu
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1616855212}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -763,6 +772,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 307962225}
   m_CullTransparentMesh: 1
+--- !u!114 &307962230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307962225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bed138e48184bf44918fd441a8785b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modeChoice: 1
 --- !u!1 &357088927
 GameObject:
   m_ObjectHideFlags: 0
@@ -848,16 +870,28 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1616855214}
-        m_TargetAssemblyTypeName: MapChoiceScript, Assembly-CSharp
-        m_MethodName: OnMapButtonPressed
+      - m_Target: {fileID: 670080705}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: ChooseMap
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 357088932}
           m_ObjectArgumentAssemblyTypeName: EnumMapChoice, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: map1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 670080705}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: ChangeMenu
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1310337925}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &357088930
@@ -1127,13 +1161,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1616855214}
-        m_TargetAssemblyTypeName: MapChoiceScript, Assembly-CSharp
-        m_MethodName: OnBackButtonPressed
-        m_Mode: 1
+      - m_Target: {fileID: 670080705}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: ChangeMenu
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1470558778}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1280,13 +1314,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 62688796}
-        m_TargetAssemblyTypeName: OptionsMenuScript, Assembly-CSharp
-        m_MethodName: OnBackButtonPressed
-        m_Mode: 1
+      - m_Target: {fileID: 670080705}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: ChangeMenu
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1470558778}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1612,8 +1646,9 @@ GameObject:
   - component: {fileID: 670080703}
   - component: {fileID: 670080702}
   - component: {fileID: 670080701}
+  - component: {fileID: 670080705}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: MenuManagerCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1706,6 +1741,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &670080705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670080700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edabfad2c4eea0a45873d7928d37459c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &677072443
 GameObject:
   m_ObjectHideFlags: 0
@@ -1790,13 +1837,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1470558780}
-        m_TargetAssemblyTypeName: PlayMenuScript, Assembly-CSharp
-        m_MethodName: OnBackButtonPressed
-        m_Mode: 1
+      - m_Target: {fileID: 670080705}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: ChangeMenu
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1994917066}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2156,13 +2203,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1994917068}
-        m_TargetAssemblyTypeName: MainMenuScript, Assembly-CSharp
-        m_MethodName: OnOptionsButtonPressed
-        m_Mode: 1
+      - m_Target: {fileID: 670080705}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: ChangeMenu
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 62688794}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2334,16 +2381,28 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1616855214}
-        m_TargetAssemblyTypeName: MapChoiceScript, Assembly-CSharp
-        m_MethodName: OnMapButtonPressed
+      - m_Target: {fileID: 670080705}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: ChooseMap
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1016302738}
           m_ObjectArgumentAssemblyTypeName: EnumMapChoice, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: map 2
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 670080705}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: ChangeMenu
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1310337925}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1016302736
@@ -2817,7 +2876,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1310337926}
-  - component: {fileID: 1310337927}
   m_Layer: 5
   m_Name: CarChoice
   m_TagString: Untagged
@@ -2848,23 +2906,6 @@ RectTransform:
   m_AnchoredPosition: {x: 19.99939, y: -40.631195}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1310337927
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1310337925}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc19943c2d8614c4e8b220e058520e66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultSelected: {fileID: 251031662}
-  car1Button: {fileID: 251031660}
-  car2Button: {fileID: 1377513518}
-  backButton: {fileID: 1326857845}
-  backMenu: {fileID: 1616855212}
 --- !u!1 &1326857845
 GameObject:
   m_ObjectHideFlags: 0
@@ -2949,13 +2990,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1310337927}
-        m_TargetAssemblyTypeName: CarChoiceScript, Assembly-CSharp
-        m_MethodName: OnBackButtonPressed
-        m_Mode: 1
+      - m_Target: {fileID: 670080705}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: ChangeMenu
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1616855212}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3083,9 +3124,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1994917068}
-        m_TargetAssemblyTypeName: MainMenuScript, Assembly-CSharp
-        m_MethodName: OnExitButtonPressed
+      - m_Target: {fileID: 670080705}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: ExitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3218,16 +3259,28 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1310337927}
-        m_TargetAssemblyTypeName: CarChoiceScript, Assembly-CSharp
-        m_MethodName: OnChooseCarButtonPressed
+      - m_Target: {fileID: 670080705}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: ChooseCar
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1377513523}
           m_ObjectArgumentAssemblyTypeName: EnumCarChoice, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: car 2
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 670080705}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: LoadRace
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1377513521
@@ -3463,7 +3516,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1470558779}
-  - component: {fileID: 1470558780}
   m_Layer: 5
   m_Name: PlayMenu
   m_TagString: Untagged
@@ -3494,25 +3546,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1470558780
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1470558778}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3712b03a277b854284133db56b586b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultSelected: {fileID: 307962227}
-  freeplayButton: {fileID: 307962225}
-  raceButton: {fileID: 1652020323}
-  backButton: {fileID: 677072443}
-  freeplayMenu: {fileID: 1616855212}
-  raceMenu: {fileID: 1616855212}
-  backMenu: {fileID: 1994917066}
 --- !u!1 &1523098975
 GameObject:
   m_ObjectHideFlags: 0
@@ -3597,13 +3630,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1994917068}
-        m_TargetAssemblyTypeName: MainMenuScript, Assembly-CSharp
-        m_MethodName: OnPlayButtonPressed
-        m_Mode: 1
+      - m_Target: {fileID: 670080705}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: ChangeMenu
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1470558778}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3791,7 +3824,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1616855213}
-  - component: {fileID: 1616855214}
   m_Layer: 5
   m_Name: MapChoice
   m_TagString: Untagged
@@ -3822,24 +3854,6 @@ RectTransform:
   m_AnchoredPosition: {x: 19.99939, y: -40.631195}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1616855214
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1616855212}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2af696a5c0b23d9499d82651d5379bad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultSelected: {fileID: 357088929}
-  map1Button: {fileID: 357088927}
-  map2Button: {fileID: 1016302733}
-  backButton: {fileID: 454383796}
-  carChoiceMenu: {fileID: 1310337925}
-  backMenu: {fileID: 1470558778}
 --- !u!1 &1652020323
 GameObject:
   m_ObjectHideFlags: 0
@@ -3852,6 +3866,7 @@ GameObject:
   - component: {fileID: 1652020327}
   - component: {fileID: 1652020326}
   - component: {fileID: 1652020325}
+  - component: {fileID: 1652020328}
   m_Layer: 5
   m_Name: Race
   m_TagString: Untagged
@@ -3924,13 +3939,25 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1470558780}
-        m_TargetAssemblyTypeName: PlayMenuScript, Assembly-CSharp
-        m_MethodName: OnRaceButtonPressed
-        m_Mode: 1
+      - m_Target: {fileID: 670080705}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: ChooseGameMode
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1652020328}
+          m_ObjectArgumentAssemblyTypeName: EnumModeChoice, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 670080705}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: ChangeMenu
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1616855212}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3974,6 +4001,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1652020323}
   m_CullTransparentMesh: 1
+--- !u!114 &1652020328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652020323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bed138e48184bf44918fd441a8785b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modeChoice: 0
 --- !u!1 &1657279372
 GameObject:
   m_ObjectHideFlags: 0
@@ -4282,50 +4322,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 5307040016831508121, guid: 1dd4ea1ccb9630d429e234c3057e339e, type: 3}
---- !u!1 &1734280099
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1734280101}
-  - component: {fileID: 1734280100}
-  m_Layer: 0
-  m_Name: GameManagerObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1734280100
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1734280099}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5bcaa7330df3634da91a1e8a1e3787f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1734280101
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1734280099}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1752985378
 GameObject:
   m_ObjectHideFlags: 0
@@ -4554,7 +4550,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6150962673326930090, guid: 742e2d724c744d54fa3dfdb8849d5f09, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6150962673326930090, guid: 742e2d724c744d54fa3dfdb8849d5f09, type: 3}
       propertyPath: m_LocalScale.x
@@ -4905,7 +4901,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1994917067}
-  - component: {fileID: 1994917068}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -4936,25 +4931,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1994917068
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1994917066}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1c420ace78d335499fa8eab983254b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultSelected: {fileID: 1523098977}
-  playButton: {fileID: 1523098975}
-  optionsButton: {fileID: 925408159}
-  exitButton: {fileID: 1336423903}
-  playMenu: {fileID: 1470558778}
-  optionsMenu: {fileID: 62688794}
-  exitMenu: {fileID: 0}
 --- !u!1 &2016911849
 GameObject:
   m_ObjectHideFlags: 0

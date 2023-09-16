@@ -24,25 +24,6 @@ public class CheckpointManagerScript : MonoBehaviour
     void Start()
     {
         SetupCheckpoints();
-        GameManager.gameManager.Siema();
-    }
-
-    public void OnCheckpointReached()
-    {
-        if (IsLastCheckpointReached())
-        {
-            OnRaceFinished();
-        }
-        else
-        {
-            currentCheckpoint++;
-            checkpoints[currentCheckpoint].SetActive(true);
-        }
-    }
-
-    bool IsLastCheckpointReached()
-    {
-        return currentCheckpoint == checkpoints.Count - 1;
     }
 
     void SetupCheckpoints()
@@ -57,9 +38,26 @@ public class CheckpointManagerScript : MonoBehaviour
         }
     }
 
-    void OnRaceFinished()
+    public void OnCheckpointReached()
     {
-        //TODO
-        //initiate race ending e.g. disabling vehicle input, saving high score
+        if (IsLastCheckpointReached())
+        {
+            OnLastCheckpointReached();
+        }
+        else
+        {
+            currentCheckpoint++;
+            checkpoints[currentCheckpoint].SetActive(true);
+        }
+    }
+
+    bool IsLastCheckpointReached()
+    {
+        return currentCheckpoint == checkpoints.Count - 1;
+    }
+
+    void OnLastCheckpointReached()
+    {
+        GameManager.gameManager.OnRaceFinished();
     }
 }
