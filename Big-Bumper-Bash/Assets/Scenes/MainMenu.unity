@@ -272,6 +272,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainMenu: {fileID: 1994917066}
+  logoObject: {fileID: 934678246}
+--- !u!1 &47990456 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 501071279411918090, guid: 742e2d724c744d54fa3dfdb8849d5f09, type: 3}
+  m_PrefabInstance: {fileID: 1854014417}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &47990461
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47990456}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6386123573599704768, guid: 1dd4ea1ccb9630d429e234c3057e339e, type: 3}
 --- !u!1 &62688794
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,7 +301,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 62688795}
-  - component: {fileID: 62688796}
   m_Layer: 5
   m_Name: OptionsMenu
   m_TagString: Untagged
@@ -311,21 +330,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &62688796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 62688794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51f54da32b1e1224c9877fc3352eaf11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultSelected: {fileID: 530630023}
-  backButton: {fileID: 530630021}
-  backMenu: {fileID: 1994917066}
 --- !u!1 &251031660
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,16 +415,28 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1310337927}
-        m_TargetAssemblyTypeName: CarChoiceScript, Assembly-CSharp
-        m_MethodName: OnChooseCarButtonPressed
+      - m_Target: {fileID: 670080705}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: ChooseCar
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 251031665}
           m_ObjectArgumentAssemblyTypeName: EnumCarChoice, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: car 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 670080705}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: LoadRace
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &251031663
@@ -621,6 +637,7 @@ GameObject:
   - component: {fileID: 307962229}
   - component: {fileID: 307962228}
   - component: {fileID: 307962227}
+  - component: {fileID: 307962230}
   m_Layer: 5
   m_Name: Freeplay
   m_TagString: Untagged
@@ -693,13 +710,25 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1470558780}
-        m_TargetAssemblyTypeName: PlayMenuScript, Assembly-CSharp
-        m_MethodName: OnFreeplayButtonPressed
-        m_Mode: 1
+      - m_Target: {fileID: 670080705}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: ChooseGameMode
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 307962230}
+          m_ObjectArgumentAssemblyTypeName: EnumModeChoice, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 670080705}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: ChangeMenu
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1616855212}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -743,6 +772,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 307962225}
   m_CullTransparentMesh: 1
+--- !u!114 &307962230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307962225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bed138e48184bf44918fd441a8785b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modeChoice: 1
 --- !u!1 &357088927
 GameObject:
   m_ObjectHideFlags: 0
@@ -828,16 +870,28 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1616855214}
-        m_TargetAssemblyTypeName: MapChoiceScript, Assembly-CSharp
-        m_MethodName: OnMapButtonPressed
+      - m_Target: {fileID: 670080705}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: ChooseMap
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 357088932}
           m_ObjectArgumentAssemblyTypeName: EnumMapChoice, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: map1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 670080705}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: ChangeMenu
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1310337925}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &357088930
@@ -891,6 +945,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapChoice: 0
+--- !u!1 &369191370 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4727371861385752716, guid: 742e2d724c744d54fa3dfdb8849d5f09, type: 3}
+  m_PrefabInstance: {fileID: 1854014417}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &369191375
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369191370}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3957125719339181931, guid: 1dd4ea1ccb9630d429e234c3057e339e, type: 3}
 --- !u!1 &375440312
 GameObject:
   m_ObjectHideFlags: 0
@@ -985,6 +1058,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &449242769 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2727823861626187075, guid: 742e2d724c744d54fa3dfdb8849d5f09, type: 3}
+  m_PrefabInstance: {fileID: 1854014417}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &449242774
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449242769}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4465587271486729594, guid: 1dd4ea1ccb9630d429e234c3057e339e, type: 3}
 --- !u!1 &454383796
 GameObject:
   m_ObjectHideFlags: 0
@@ -1069,13 +1161,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1616855214}
-        m_TargetAssemblyTypeName: MapChoiceScript, Assembly-CSharp
-        m_MethodName: OnBackButtonPressed
-        m_Mode: 1
+      - m_Target: {fileID: 670080705}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: ChangeMenu
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1470558778}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1119,6 +1211,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 454383796}
   m_CullTransparentMesh: 1
+--- !u!1 &486541841 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8091689357720959901, guid: 742e2d724c744d54fa3dfdb8849d5f09, type: 3}
+  m_PrefabInstance: {fileID: 1854014417}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &486541846
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 486541841}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7225609291608779168, guid: 1dd4ea1ccb9630d429e234c3057e339e, type: 3}
 --- !u!1 &530630021
 GameObject:
   m_ObjectHideFlags: 0
@@ -1203,13 +1314,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 62688796}
-        m_TargetAssemblyTypeName: OptionsMenuScript, Assembly-CSharp
-        m_MethodName: OnBackButtonPressed
-        m_Mode: 1
+      - m_Target: {fileID: 670080705}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: ChangeMenu
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1470558778}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1535,8 +1646,9 @@ GameObject:
   - component: {fileID: 670080703}
   - component: {fileID: 670080702}
   - component: {fileID: 670080701}
+  - component: {fileID: 670080705}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: MenuManagerCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1629,6 +1741,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &670080705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670080700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edabfad2c4eea0a45873d7928d37459c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &677072443
 GameObject:
   m_ObjectHideFlags: 0
@@ -1713,13 +1837,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1470558780}
-        m_TargetAssemblyTypeName: PlayMenuScript, Assembly-CSharp
-        m_MethodName: OnBackButtonPressed
-        m_Mode: 1
+      - m_Target: {fileID: 670080705}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: ChangeMenu
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1994917066}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1763,6 +1887,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 677072443}
   m_CullTransparentMesh: 1
+--- !u!1 &804243366 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7395393648490285096, guid: 742e2d724c744d54fa3dfdb8849d5f09, type: 3}
+  m_PrefabInstance: {fileID: 1854014417}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &804243371
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804243366}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6122139418476569560, guid: 1dd4ea1ccb9630d429e234c3057e339e, type: 3}
 --- !u!1 &870219329
 GameObject:
   m_ObjectHideFlags: 0
@@ -2060,13 +2203,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1994917068}
-        m_TargetAssemblyTypeName: MainMenuScript, Assembly-CSharp
-        m_MethodName: OnOptionsButtonPressed
-        m_Mode: 1
+      - m_Target: {fileID: 670080705}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: ChangeMenu
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 62688794}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2110,6 +2253,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 925408159}
   m_CullTransparentMesh: 1
+--- !u!1 &934678246 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6779970617319285264, guid: 742e2d724c744d54fa3dfdb8849d5f09, type: 3}
+  m_PrefabInstance: {fileID: 1854014417}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &952840249 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7710374790846172474, guid: 742e2d724c744d54fa3dfdb8849d5f09, type: 3}
+  m_PrefabInstance: {fileID: 1854014417}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &952840254
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 952840249}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7444489947308704070, guid: 1dd4ea1ccb9630d429e234c3057e339e, type: 3}
+--- !u!1 &992221478 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8444265317992564307, guid: 742e2d724c744d54fa3dfdb8849d5f09, type: 3}
+  m_PrefabInstance: {fileID: 1854014417}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &992221483
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 992221478}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8219325328549835049, guid: 1dd4ea1ccb9630d429e234c3057e339e, type: 3}
 --- !u!1 &1016302733
 GameObject:
   m_ObjectHideFlags: 0
@@ -2195,16 +2381,28 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1616855214}
-        m_TargetAssemblyTypeName: MapChoiceScript, Assembly-CSharp
-        m_MethodName: OnMapButtonPressed
+      - m_Target: {fileID: 670080705}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: ChooseMap
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1016302738}
           m_ObjectArgumentAssemblyTypeName: EnumMapChoice, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: map 2
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 670080705}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: ChangeMenu
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1310337925}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1016302736
@@ -2528,6 +2726,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1074286542}
   m_CullTransparentMesh: 1
+--- !u!1 &1211862623 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4177609619702028135, guid: 742e2d724c744d54fa3dfdb8849d5f09, type: 3}
+  m_PrefabInstance: {fileID: 1854014417}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1211862628
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1211862623}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2236483235827870531, guid: 1dd4ea1ccb9630d429e234c3057e339e, type: 3}
 --- !u!1 &1220195049
 GameObject:
   m_ObjectHideFlags: 0
@@ -2659,7 +2876,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1310337926}
-  - component: {fileID: 1310337927}
   m_Layer: 5
   m_Name: CarChoice
   m_TagString: Untagged
@@ -2690,23 +2906,6 @@ RectTransform:
   m_AnchoredPosition: {x: 19.99939, y: -40.631195}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1310337927
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1310337925}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc19943c2d8614c4e8b220e058520e66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultSelected: {fileID: 251031662}
-  car1Button: {fileID: 251031660}
-  car2Button: {fileID: 1377513518}
-  backButton: {fileID: 1326857845}
-  backMenu: {fileID: 1616855212}
 --- !u!1 &1326857845
 GameObject:
   m_ObjectHideFlags: 0
@@ -2791,13 +2990,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1310337927}
-        m_TargetAssemblyTypeName: CarChoiceScript, Assembly-CSharp
-        m_MethodName: OnBackButtonPressed
-        m_Mode: 1
+      - m_Target: {fileID: 670080705}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: ChangeMenu
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1616855212}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2925,9 +3124,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1994917068}
-        m_TargetAssemblyTypeName: MainMenuScript, Assembly-CSharp
-        m_MethodName: OnExitButtonPressed
+      - m_Target: {fileID: 670080705}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: ExitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3060,16 +3259,28 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1310337927}
-        m_TargetAssemblyTypeName: CarChoiceScript, Assembly-CSharp
-        m_MethodName: OnChooseCarButtonPressed
+      - m_Target: {fileID: 670080705}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: ChooseCar
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1377513523}
           m_ObjectArgumentAssemblyTypeName: EnumCarChoice, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: car 2
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 670080705}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: LoadRace
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1377513521
@@ -3123,6 +3334,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carChoice: 1
+--- !u!1 &1397572439 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8088232508641699690, guid: 742e2d724c744d54fa3dfdb8849d5f09, type: 3}
+  m_PrefabInstance: {fileID: 1854014417}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1397572444
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397572439}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1859068390786804297, guid: 1dd4ea1ccb9630d429e234c3057e339e, type: 3}
 --- !u!1 &1421894869
 GameObject:
   m_ObjectHideFlags: 0
@@ -3258,6 +3488,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1421894869}
   m_CullTransparentMesh: 1
+--- !u!1 &1442203250 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2743442929509294695, guid: 742e2d724c744d54fa3dfdb8849d5f09, type: 3}
+  m_PrefabInstance: {fileID: 1854014417}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1442203255
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1442203250}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -9181148687425367798, guid: 1dd4ea1ccb9630d429e234c3057e339e, type: 3}
 --- !u!1 &1470558778
 GameObject:
   m_ObjectHideFlags: 0
@@ -3267,7 +3516,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1470558779}
-  - component: {fileID: 1470558780}
   m_Layer: 5
   m_Name: PlayMenu
   m_TagString: Untagged
@@ -3298,25 +3546,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1470558780
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1470558778}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3712b03a277b854284133db56b586b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultSelected: {fileID: 307962227}
-  freeplayButton: {fileID: 307962225}
-  raceButton: {fileID: 1652020323}
-  backButton: {fileID: 677072443}
-  freeplayMenu: {fileID: 1616855212}
-  raceMenu: {fileID: 1616855212}
-  backMenu: {fileID: 1994917066}
 --- !u!1 &1523098975
 GameObject:
   m_ObjectHideFlags: 0
@@ -3401,13 +3630,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1994917068}
-        m_TargetAssemblyTypeName: MainMenuScript, Assembly-CSharp
-        m_MethodName: OnPlayButtonPressed
-        m_Mode: 1
+      - m_Target: {fileID: 670080705}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: ChangeMenu
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1470558778}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3595,7 +3824,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1616855213}
-  - component: {fileID: 1616855214}
   m_Layer: 5
   m_Name: MapChoice
   m_TagString: Untagged
@@ -3626,24 +3854,6 @@ RectTransform:
   m_AnchoredPosition: {x: 19.99939, y: -40.631195}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1616855214
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1616855212}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2af696a5c0b23d9499d82651d5379bad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultSelected: {fileID: 357088929}
-  map1Button: {fileID: 357088927}
-  map2Button: {fileID: 1016302733}
-  backButton: {fileID: 454383796}
-  carChoiceMenu: {fileID: 1310337925}
-  backMenu: {fileID: 1470558778}
 --- !u!1 &1652020323
 GameObject:
   m_ObjectHideFlags: 0
@@ -3656,6 +3866,7 @@ GameObject:
   - component: {fileID: 1652020327}
   - component: {fileID: 1652020326}
   - component: {fileID: 1652020325}
+  - component: {fileID: 1652020328}
   m_Layer: 5
   m_Name: Race
   m_TagString: Untagged
@@ -3728,13 +3939,25 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1470558780}
-        m_TargetAssemblyTypeName: PlayMenuScript, Assembly-CSharp
-        m_MethodName: OnRaceButtonPressed
-        m_Mode: 1
+      - m_Target: {fileID: 670080705}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: ChooseGameMode
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1652020328}
+          m_ObjectArgumentAssemblyTypeName: EnumModeChoice, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 670080705}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: ChangeMenu
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1616855212}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3778,6 +4001,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1652020323}
   m_CullTransparentMesh: 1
+--- !u!114 &1652020328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652020323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bed138e48184bf44918fd441a8785b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modeChoice: 0
 --- !u!1 &1657279372
 GameObject:
   m_ObjectHideFlags: 0
@@ -4048,6 +4284,44 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1678913044}
   m_CullTransparentMesh: 1
+--- !u!1 &1680141647 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 863666158208864058, guid: 742e2d724c744d54fa3dfdb8849d5f09, type: 3}
+  m_PrefabInstance: {fileID: 1854014417}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1680141652
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1680141647}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6002365018762884699, guid: 1dd4ea1ccb9630d429e234c3057e339e, type: 3}
+--- !u!1 &1702775219 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7325200631184359651, guid: 742e2d724c744d54fa3dfdb8849d5f09, type: 3}
+  m_PrefabInstance: {fileID: 1854014417}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1702775224
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1702775219}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5307040016831508121, guid: 1dd4ea1ccb9630d429e234c3057e339e, type: 3}
 --- !u!1 &1752985378
 GameObject:
   m_ObjectHideFlags: 0
@@ -4125,7 +4399,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1752985378}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 2.32, z: -5.78}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4267,6 +4541,87 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1812875240}
   m_CullTransparentMesh: 1
+--- !u!1001 &1854014417
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6150962673326930090, guid: 742e2d724c744d54fa3dfdb8849d5f09, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150962673326930090, guid: 742e2d724c744d54fa3dfdb8849d5f09, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150962673326930090, guid: 742e2d724c744d54fa3dfdb8849d5f09, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150962673326930090, guid: 742e2d724c744d54fa3dfdb8849d5f09, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150962673326930090, guid: 742e2d724c744d54fa3dfdb8849d5f09, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150962673326930090, guid: 742e2d724c744d54fa3dfdb8849d5f09, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150962673326930090, guid: 742e2d724c744d54fa3dfdb8849d5f09, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150962673326930090, guid: 742e2d724c744d54fa3dfdb8849d5f09, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150962673326930090, guid: 742e2d724c744d54fa3dfdb8849d5f09, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150962673326930090, guid: 742e2d724c744d54fa3dfdb8849d5f09, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150962673326930090, guid: 742e2d724c744d54fa3dfdb8849d5f09, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150962673326930090, guid: 742e2d724c744d54fa3dfdb8849d5f09, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150962673326930090, guid: 742e2d724c744d54fa3dfdb8849d5f09, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150962673326930090, guid: 742e2d724c744d54fa3dfdb8849d5f09, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6779970617319285264, guid: 742e2d724c744d54fa3dfdb8849d5f09, type: 3}
+      propertyPath: m_Name
+      value: logoPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 8869998842074683560, guid: 742e2d724c744d54fa3dfdb8849d5f09, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8869998842074683560, guid: 742e2d724c744d54fa3dfdb8849d5f09, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8869998842074683560, guid: 742e2d724c744d54fa3dfdb8849d5f09, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 742e2d724c744d54fa3dfdb8849d5f09, type: 3}
 --- !u!1 &1894587794
 GameObject:
   m_ObjectHideFlags: 0
@@ -4546,7 +4901,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1994917067}
-  - component: {fileID: 1994917068}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -4577,25 +4931,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1994917068
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1994917066}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1c420ace78d335499fa8eab983254b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultSelected: {fileID: 1523098977}
-  playButton: {fileID: 1523098975}
-  optionsButton: {fileID: 925408159}
-  exitButton: {fileID: 1336423903}
-  playMenu: {fileID: 1470558778}
-  optionsMenu: {fileID: 62688794}
-  exitMenu: {fileID: 0}
 --- !u!1 &2016911849
 GameObject:
   m_ObjectHideFlags: 0
@@ -4731,3 +5066,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2016911849}
   m_CullTransparentMesh: 1
+--- !u!1 &2024396184 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3670670367337370160, guid: 742e2d724c744d54fa3dfdb8849d5f09, type: 3}
+  m_PrefabInstance: {fileID: 1854014417}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &2024396189
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2024396184}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4655733538737959434, guid: 1dd4ea1ccb9630d429e234c3057e339e, type: 3}
