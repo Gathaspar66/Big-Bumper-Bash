@@ -10,20 +10,17 @@ public class CarMovement : MonoBehaviour
     private Vector3 pos;
     private Quaternion quat;
 
-    [Header("Wheels colliders")]
-    public WheelCollider colliderFrontLeft;
+    [Header("Wheels colliders")] public WheelCollider colliderFrontLeft;
     public WheelCollider colliderFrontRight;
     public WheelCollider colliderBackLeft;
     public WheelCollider colliderBackRight;
 
-    [Header("Wheels")]
-    public Transform wheelFrontLeft;
+    [Header("Wheels")] public Transform wheelFrontLeft;
     public Transform wheelFrontRight;
     public Transform wheelBackLeft;
     public Transform wheelBackRight;
 
-    [Header("Vehicle settings")]
-    public float maxSteerAngle = 30;
+    [Header("Vehicle settings")] public float maxSteerAngle = 30;
     public float motorForce = 1500;
 
     public Vector3 centerOfMass;
