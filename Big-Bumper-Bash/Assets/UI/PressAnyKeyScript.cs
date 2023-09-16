@@ -4,21 +4,16 @@ using UnityEngine;
 
 public class PressAnyKeyScript : MonoBehaviour
 {
-    public GameObject mainMenu;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject mainMenu, logoObject;
 
     // Update is called once per frame
     void Update()
     {
         if (Input.anyKeyDown)
         {
-            mainMenu.SetActive(true);
+            MenuManager.menuManager.ChangeMenu(mainMenu);
             gameObject.SetActive(false);
+            logoObject.GetComponent<LogoScript>().Activate();
         }
     }
 }

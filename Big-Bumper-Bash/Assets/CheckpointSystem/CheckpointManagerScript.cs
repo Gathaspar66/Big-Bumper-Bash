@@ -26,11 +26,23 @@ public class CheckpointManagerScript : MonoBehaviour
         SetupCheckpoints();
     }
 
+    void SetupCheckpoints()
+    {
+        if (checkpoints.Count > 0)
+        {
+            foreach (GameObject checkpoint in checkpoints)
+            {
+                checkpoint.SetActive(false);
+            }
+            checkpoints[0].SetActive(true);
+        }
+    }
+
     public void OnCheckpointReached()
     {
         if (IsLastCheckpointReached())
         {
-            OnRaceFinished();
+            OnLastCheckpointReached();
         }
         else
         {
@@ -44,21 +56,8 @@ public class CheckpointManagerScript : MonoBehaviour
         return currentCheckpoint == checkpoints.Count - 1;
     }
 
-    void SetupCheckpoints()
+    void OnLastCheckpointReached()
     {
-        if (checkpoints.Count > 0)
-        {
-            foreach (GameObject checkpoint in checkpoints)
-            {
-                checkpoint.SetActive(false);
-            }
-            checkpoints[0].SetActive(true);
-        }
-    }
-
-    void OnRaceFinished()
-    {
-        //TODO
-        //initiate race ending e.g. disabling vehicle input, saving high score
+        GameManager.gameManager.OnRaceFinished();
     }
 }
