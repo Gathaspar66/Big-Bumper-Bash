@@ -9,14 +9,12 @@ public class VehicleSpeedController : MonoBehaviour
     public TextMeshProUGUI speedText;
     private Vector3 carSpeed;
     float scalarSpeed;
+
     void Update()
     {
         SetSpeed();
         SetDisplayText();
     }
-
-
-
 
 
     public void SetSpeed()
@@ -26,11 +24,8 @@ public class VehicleSpeedController : MonoBehaviour
     }
 
 
-
-
     public void SetDisplayText()
     {
         speedText.text = "Speed: " + scalarSpeed.ToString("F0");
     }
-
 }
