@@ -961,4 +961,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxRotationAngleX: 5
-  rotationSpeed: 0.1
+  rotationSpeed: 1

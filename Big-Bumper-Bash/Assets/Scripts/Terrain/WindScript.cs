@@ -39,14 +39,13 @@ public class WindScript : MonoBehaviour
     {
         pingPongTime += Time.deltaTime * rotationSpeed;
 
-        pingPongValue = Mathf.PingPong(pingPongTime + randomOffset, 2.0f) - 1.0f;
-        rotationAngleX = pingPongValue * maxRotationAngleX;
+        pingPongValue = Mathf.PingPong(pingPongTime + randomOffset, maxRotationAngleX * 2) - (maxRotationAngleX);
     }
 
     void SetRotation()
     {
         targetRotation =
-            Quaternion.Euler(initialRotation.x + rotationAngleX, initialRotation.y, initialRotation.z);
+            Quaternion.Euler(initialRotation.x + pingPongValue, initialRotation.y, initialRotation.z);
         transform.rotation = targetRotation;
     }
 }

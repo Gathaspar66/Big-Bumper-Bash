@@ -11,7 +11,7 @@ public class FrontLightsControllerScript : MonoBehaviour
 
     void Start()
     {
-        SetLights(false);
+        SetLightsActiveStatus(false);
 
         SetInitialColor();
     }
@@ -26,7 +26,7 @@ public class FrontLightsControllerScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.L))
         {
             lightsOn = !lightsOn;
-            SetLights(lightsOn);
+            SetLightsActiveStatus(lightsOn);
 
 
             if (lightsOn)
@@ -41,7 +41,7 @@ public class FrontLightsControllerScript : MonoBehaviour
     }
 
 
-    void SetLights(bool isActive)
+    void SetLightsActiveStatus(bool isActive)
     {
         leftLight.enabled = isActive;
         rightLight.enabled = isActive;

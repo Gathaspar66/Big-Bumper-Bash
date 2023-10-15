@@ -14,10 +14,10 @@ public class BackLightsControllerScript : MonoBehaviour
 
     void Update()
     {
-        SwitchEmissionOnKey();
+        OnSwitchEmissionKey();
     }
 
-    private void SwitchEmissionOnKey()
+    private void OnSwitchEmissionKey()
     {
         if (Input.GetKeyDown(KeyCode.S))
         {
