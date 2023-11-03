@@ -1,16 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject ogierPrefab;
-    public GameObject unikaczPrefab;
-
-    GameObject playerCar;
-
+    private GameObject playerCar;
     public static GameManager gameManager { get; private set; }
+    public Map loadedTrackChoice;
+    public GameMode loadedGameModeChoice;
+    public Car loadedCarChoice;
 
     private void Awake()
     {
@@ -27,7 +27,15 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         DebugLoadedSettings();
-        LoadRaceSettings();
+        LoadTrackSetting();
+        MapInitialization();
+    }
+
+    public void LoadTrackSetting() //Loads all the player's choices
+    {
+        loadedTrackChoice = (Map)PlayerPrefs.GetInt("mapChoice");
+        loadedGameModeChoice = (GameMode)PlayerPrefs.GetInt("modeChoice");
+        loadedCarChoice = (Car)PlayerPrefs.GetInt("carChoice");
     }
 
     void DebugLoadedSettings()
@@ -37,27 +45,21 @@ public class GameManager : MonoBehaviour
         print("mapChoice: " + PlayerPrefs.GetInt("mapChoice") + " " + (Map)PlayerPrefs.GetInt("mapChoice"));
     }
 
-    void LoadRaceSettings()
+    void MapInitialization()
     {
+        SetupTrack();
+
+
         SetupCar();
         SetupWidgets();
-        SetupTrack();
+     
 
         StartRace();
     }
 
     void SetupCar()
     {
-        switch((Car)PlayerPrefs.GetInt("carChoice"))
-        {
-            case Car.CAR1_OGIER:
-                playerCar = Instantiate(ogierPrefab);
-                break;
-
-            case Car.CAR2_UNIKACZ:
-                playerCar = Instantiate(unikaczPrefab);
-                break;
-        }
+        CarManagerScript.CarManager.Activate();
     }
 
     void SetupWidgets()
@@ -68,7 +70,9 @@ public class GameManager : MonoBehaviour
     void SetupTrack()
     {
         //checkpoints inform the widget manager and whatever cleanup left here
+        TrackManagerScript.TrackManager.SetObjectActive();
     }
+
 
     void StartRace()
     {
@@ -88,5 +92,10 @@ public class GameManager : MonoBehaviour
     public GameObject GetPlayerCar()
     {
         return playerCar;
+    }
+
+    public void SetPlayerCar(GameObject car)
+    {
+        playerCar = car;
     }
 }

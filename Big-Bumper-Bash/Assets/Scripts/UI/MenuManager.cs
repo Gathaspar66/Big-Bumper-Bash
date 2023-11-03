@@ -22,7 +22,7 @@ public class MenuManager : MonoBehaviour
 
     private void SelectFirstButton(GameObject parent)
     {
-        foreach(Transform child in parent.transform)
+        foreach (Transform child in parent.transform)
         {
             child.GetComponent<Button>().Select();
             break;
@@ -35,6 +35,7 @@ public class MenuManager : MonoBehaviour
         {
             menuChild.gameObject.SetActive(false);
         }
+
         newMenu.SetActive(true);
         SelectFirstButton(newMenu);
         if (newMenu.TryGetComponent<IActivable>(out IActivable component))
@@ -45,7 +46,6 @@ public class MenuManager : MonoBehaviour
 
     public void ExitGame()
     {
-
     }
 
     public void ChooseGameMode(EnumModeChoice modeChoice)
@@ -56,8 +56,9 @@ public class MenuManager : MonoBehaviour
     public void ChooseMap(EnumMapChoice mapChoice)
     {
         PlayerPrefs.SetInt("mapChoice", (int)mapChoice.mapChoice);
+        
     }
-
+   
     public void ChooseCar(EnumCarChoice carChoice)
     {
         PlayerPrefs.SetInt("carChoice", (int)carChoice.carChoice);
@@ -65,6 +66,16 @@ public class MenuManager : MonoBehaviour
 
     public void LoadRace()
     {
-        SceneManager.LoadScene("test track");
+        switch ((Map)PlayerPrefs.GetInt("mapChoice"))
+        {
+            case Map.SNOW_MAP_NORMAL:
+                SceneManager.LoadScene("Level1");
+                
+                break;
+
+            case Map.SNOW_MAP_REVERSE:
+                SceneManager.LoadScene("Level1");
+                break;
+        }
     }
 }

@@ -10,8 +10,8 @@ public enum Car
 }
 public enum Map
 {
-    MAP1,
-    MAP2
+    SNOW_MAP_NORMAL,
+    SNOW_MAP_REVERSE
 }
 
 public enum GameMode
