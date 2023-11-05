@@ -36,18 +36,28 @@ public class CarManagerScript : MonoBehaviour
         SetWeather();
     }
 
+    public void SetActiveCarMovement()
+    {
+        //CarMovement.isControlEnabled = true;
+        GameManager.gameManager.GetPlayerCar().GetComponent<CarMovement>().EnableInput(true);
+    }
+
     public void SpawnCar()
     {
         switch (GameManager.gameManager.loadedCarChoice)
         {
             case Car.CAR1_OGIER:
-                playerCar = Instantiate(ogierPrefab);
+                playerCar = Instantiate(ogierPrefab,
+                    CheckpointManagerScript.checkpointManager.GetFirstCheckpointPosition().position,
+                    CheckpointManagerScript.checkpointManager.GetFirstCheckpointPosition().rotation);
 
 
                 break;
 
             case Car.CAR2_UNIKACZ:
-                playerCar = Instantiate(unikaczPrefab);
+                playerCar = Instantiate(unikaczPrefab,
+                    CheckpointManagerScript.checkpointManager.GetFirstCheckpointPosition().position,
+                    CheckpointManagerScript.checkpointManager.GetFirstCheckpointPosition().rotation);
 
                 break;
         }

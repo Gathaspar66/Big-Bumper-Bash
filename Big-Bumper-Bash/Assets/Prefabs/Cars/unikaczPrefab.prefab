@@ -1156,6 +1156,7 @@ MonoBehaviour:
   motorForce: 1500
   centerOfMass: {x: 0, y: 0, z: 0}
   carRigidBody: {fileID: 0}
+  isControlEnabled: 0
 --- !u!1 &9109540673488672634
 GameObject:
   m_ObjectHideFlags: 0

@@ -1489,6 +1489,7 @@ MonoBehaviour:
   motorForce: 1500
   centerOfMass: {x: 0, y: 0, z: 0}
   carRigidBody: {fileID: 2311560740271296342}
+  isControlEnabled: 0
 --- !u!64 &1518512256
 MeshCollider:
   m_ObjectHideFlags: 0

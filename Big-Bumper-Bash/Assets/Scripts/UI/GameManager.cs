@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public Map loadedTrackChoice;
     public GameMode loadedGameModeChoice;
     public Car loadedCarChoice;
+    public Transform startPosition;
 
     private void Awake()
     {
@@ -27,15 +28,9 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         DebugLoadedSettings();
+
         LoadTrackSetting();
         MapInitialization();
-    }
-
-    public void LoadTrackSetting() //Loads all the player's choices
-    {
-        loadedTrackChoice = (Map)PlayerPrefs.GetInt("mapChoice");
-        loadedGameModeChoice = (GameMode)PlayerPrefs.GetInt("modeChoice");
-        loadedCarChoice = (Car)PlayerPrefs.GetInt("carChoice");
     }
 
     void DebugLoadedSettings()
@@ -45,6 +40,14 @@ public class GameManager : MonoBehaviour
         print("mapChoice: " + PlayerPrefs.GetInt("mapChoice") + " " + (Map)PlayerPrefs.GetInt("mapChoice"));
     }
 
+    public void LoadTrackSetting() //Loads all the player's choices
+    {
+        loadedTrackChoice = (Map)PlayerPrefs.GetInt("mapChoice");
+        loadedGameModeChoice = (GameMode)PlayerPrefs.GetInt("modeChoice");
+        loadedCarChoice = (Car)PlayerPrefs.GetInt("carChoice");
+    }
+
+
     void MapInitialization()
     {
         SetupTrack();
@@ -52,9 +55,13 @@ public class GameManager : MonoBehaviour
 
         SetupCar();
         SetupWidgets();
-     
+    }
 
-        StartRace();
+    void SetupTrack()
+    {
+        CheckpointManagerScript.checkpointManager.Activate();
+
+        TrackManagerScript.TrackManager.Activate();
     }
 
     void SetupCar()
@@ -64,30 +71,21 @@ public class GameManager : MonoBehaviour
 
     void SetupWidgets()
     {
-        //initialize and activate widgets here
+        RaceWidgetManagerScript.raceWidgetManager.Activate();
     }
 
-    void SetupTrack()
-    {
-        //checkpoints inform the widget manager and whatever cleanup left here
-        TrackManagerScript.TrackManager.SetObjectActive();
-    }
-
-
-    void StartRace()
-    {
-        //activate countdown
-    }
 
     public void OnRaceStarted()
     {
-        //enable controls, stopwatch, etc
+        CarManagerScript.CarManager.SetActiveCarMovement();
+        StopWatchScript.StopWatch.StartTime();
     }
 
     public void OnRaceFinished()
     {
-        //race ending activites here
+        StopWatchScript.StopWatch.StopTime();
     }
+
 
     public GameObject GetPlayerCar()
     {

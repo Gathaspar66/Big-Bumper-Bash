@@ -9,11 +9,37 @@ public class ArrowController : MonoBehaviour
     private float angle;
     private Vector3 direction;
     private Quaternion targetRotation;
+    public static ArrowController arrowController { get; private set; }
+
+
+    private void Awake()
+    {
+        if (arrowController != null && arrowController != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            arrowController = this;
+        }
+    }
+
+    void Start()
+    {
+        car = GameManager.gameManager.GetPlayerCar().transform;
+    }
+
 
     void Update()
     {
         RotateArrowTowardsTarget();
     }
+
+    public void SetUpTarget(GameObject checkPoint)
+    {
+        target = checkPoint.transform;
+    }
+
 
     private void RotateArrowTowardsTarget()
     {

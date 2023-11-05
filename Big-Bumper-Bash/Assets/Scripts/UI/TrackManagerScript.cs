@@ -6,15 +6,11 @@ using UnityEngine;
 
 public class TrackManagerScript : MonoBehaviour
 {
-    public GameObject[] normalSnowTrack;
-    public GameObject[] reverseSnowTrack;
-
-    public GameObject[] normalConstructionMapTrack;
-    public GameObject[] reverseConstructionMapTrack;
+    public GameObject[] normalTrack;
+    public GameObject[] reverseTrack;
 
 
     public static TrackManagerScript TrackManager { get; private set; }
-    private Map track;
 
 
     private void Awake()
@@ -29,15 +25,19 @@ public class TrackManagerScript : MonoBehaviour
         }
     }
 
+    public void Activate()
+    {
+        SetObjectActive();
+    }
 
     public void SetObjectActive()
     {
         switch (GameManager.gameManager.loadedTrackChoice)
         {
             case Map.SNOW_MAP_NORMAL:
+            case Map.CONSTRUCTION_MAP_NORMAL:
 
-
-                foreach (GameObject objectOfArray in normalSnowTrack)
+                foreach (GameObject objectOfArray in normalTrack)
                 {
                     objectOfArray.SetActive(true);
                 }
@@ -45,8 +45,8 @@ public class TrackManagerScript : MonoBehaviour
                 break;
 
             case Map.SNOW_MAP_REVERSE:
-
-                foreach (GameObject objectOfArray in reverseSnowTrack)
+            case Map.CONSTRUCTION_MAP_REVERSE:
+                foreach (GameObject objectOfArray in reverseTrack)
                 {
                     objectOfArray.SetActive(true);
                 }
