@@ -3,16 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Weather
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - arrow
+  - Arrow
   - Water
   - UI
-  - 
-  - 
+  - Glow
+  - Snow
   - 
   - 
   - 

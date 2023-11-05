@@ -8,10 +8,13 @@ public enum Car
     CAR1_OGIER,
     CAR2_UNIKACZ
 }
+
 public enum Map
 {
-    MAP1,
-    MAP2
+    SNOW_MAP_NORMAL,
+    SNOW_MAP_REVERSE,
+    CONSTRUCTION_MAP_NORMAL,
+    CONSTRUCTION_MAP_REVERSE
 }
 
 public enum GameMode
@@ -32,6 +35,7 @@ public enum BashLettersState
     RAGDOLL,
     RETURN
 }
+
 public enum Widget
 {
     ARROW,

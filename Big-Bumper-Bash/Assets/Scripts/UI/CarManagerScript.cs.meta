@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 2aa11110d333de64dafa9bd3bcd3c3f1
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - ogierPrefab: {fileID: 8977912956506598550, guid: 2077ee2d2dfa38b48a3e8f6fef6c91d6, type: 3}
+  - unikaczPrefab: {fileID: 8703528105252842112, guid: e861d0a4c3973fa49b21d6691632cb92, type: 3}
+  - snow: {fileID: 4242136277466799650, guid: 3ca68ced3138d6d40924075dbad1d90c, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

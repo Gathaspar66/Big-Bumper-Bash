@@ -10,12 +10,17 @@ public class VehicleSpeedController : MonoBehaviour
     private Vector3 carSpeed;
     float scalarSpeed;
 
+
     void Update()
     {
         SetSpeed();
         SetDisplayText();
     }
 
+    void Start()
+    {
+        carRigidbody = GameManager.gameManager.GetPlayerCar().GetComponent<Rigidbody>();
+    }
 
     public void SetSpeed()
     {
