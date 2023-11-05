@@ -25,6 +25,7 @@ public class CarMovement : MonoBehaviour
 
     public Vector3 centerOfMass;
     public Rigidbody carRigidBody;
+    public bool isControlEnabled = false;
 
     void Start()
     {
@@ -51,8 +52,15 @@ public class CarMovement : MonoBehaviour
 
     public void GetInput()
     {
+        if (!isControlEnabled) return;
+
         m_horizontalInput = Input.GetAxis("Horizontal");
         m_verticalInput = Input.GetAxis("Vertical");
+    }
+
+    public void EnableInput(bool enabled)
+    {
+        isControlEnabled = enabled;
     }
 
     private void Steer()

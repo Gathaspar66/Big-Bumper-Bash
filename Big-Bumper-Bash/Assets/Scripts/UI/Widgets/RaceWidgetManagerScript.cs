@@ -8,6 +8,8 @@ public class RaceWidgetManagerScript : MonoBehaviour
     public GameObject arrow;
     public GameObject miniMap;
     public GameObject speed;
+    public GameObject countdown;
+    public GameObject stopWatch;
     public static RaceWidgetManagerScript raceWidgetManager { get; private set; }
 
     private void Awake()
@@ -22,28 +24,32 @@ public class RaceWidgetManagerScript : MonoBehaviour
         }
     }
 
-    void Start()
+
+    public void Activate()
     {
+        SetupWidgets();
     }
 
-    void Update()
-    {
-    }
 
-    public void SetActive(Widget widgetName, bool isActive)
+    public void SetupWidgets()
     {
-        switch (widgetName)
+        switch (GameManager.gameManager.loadedGameModeChoice)
+
+
         {
-            case Widget.ARROW:
-                arrow.SetActive(isActive);
+            case GameMode.FREEPLAY:
+
+                speed.SetActive(true);
+                countdown.SetActive(true);
                 break;
 
-            case Widget.SPEEDOMETER:
-                speed.SetActive(isActive);
-                break;
+            case GameMode.RACE:
 
-            case Widget.MINIMAP:
-                miniMap.SetActive(isActive);
+                speed.SetActive(true);
+                arrow.SetActive(true);
+                miniMap.SetActive(true);
+                countdown.SetActive(true);
+                stopWatch.SetActive(true);
                 break;
         }
     }
