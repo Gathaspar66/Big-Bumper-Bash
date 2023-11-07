@@ -9,6 +9,7 @@ public class CranePickupScript : MonoBehaviour
     public GameObject magnet;
     public Vector3 xd = new Vector3(1, 0, 0);
     GameObject car;
+
     void Start()
     {
     }
@@ -16,7 +17,6 @@ public class CranePickupScript : MonoBehaviour
 
     void Update()
     {
-
     }
 
     private void OnTriggerEnter(Collider other)
