@@ -53,4 +53,12 @@ public class RaceWidgetManagerScript : MonoBehaviour
                 break;
         }
     }
+    public void OnRaceFinished()
+    {
+        speed.SetActive(false);
+        arrow.SetActive(false);
+        miniMap.SetActive(false);
+        countdown.SetActive(false);
+        stopWatch.SetActive(false);
+    }
 }

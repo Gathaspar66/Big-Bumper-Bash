@@ -3,7 +3,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public Transform cameraTarget;
-    public Transform car;
+    private Rigidbody carRigidbody;
     public Vector3 offset;
     public float followSpeed = 10.0f;
     private Vector3 lookDirection;
@@ -11,10 +11,12 @@ public class CameraController : MonoBehaviour
     private Vector3 targetPosition;
     private Vector3 desiredVelocity;
     private Rigidbody cameraRigidbody;
+    private float followSpeedMultiplier = 1;
 
     private void Start()
     {
         cameraRigidbody = GetComponent<Rigidbody>();
+        carRigidbody = GameManager.gameManager.GetPlayerCar().GetComponent<Rigidbody>();
     }
 
     private void FixedUpdate()
@@ -36,9 +38,14 @@ public class CameraController : MonoBehaviour
                          cameraTarget.forward * offset.z +
                          Vector3.up * offset.y;
 
-        followSpeed = car.GetComponent<Rigidbody>().velocity.magnitude;
+        followSpeed = carRigidbody.velocity.magnitude * followSpeedMultiplier;
 
         desiredVelocity = (targetPosition - transform.position) * followSpeed;
         cameraRigidbody.velocity = desiredVelocity;
+    }
+
+    public void SetCameraFollowSpeed(float speed)
+    {
+        followSpeedMultiplier = speed;
     }
 }

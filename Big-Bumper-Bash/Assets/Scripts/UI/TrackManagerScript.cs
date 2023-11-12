@@ -8,6 +8,7 @@ public class TrackManagerScript : MonoBehaviour
 {
     public GameObject[] normalTrack;
     public GameObject[] reverseTrack;
+    public GameObject[] oddTrack;
 
 
     public static TrackManagerScript TrackManager { get; private set; }
@@ -46,6 +47,15 @@ public class TrackManagerScript : MonoBehaviour
 
             case Map.SNOW_MAP_REVERSE:
             case Map.CONSTRUCTION_MAP_REVERSE:
+                foreach (GameObject objectOfArray in reverseTrack)
+                {
+                    objectOfArray.SetActive(true);
+                }
+
+                break;
+
+            case Map.SNOW_MAP_ODD:
+            case Map.CONSTRUCTION_MAP_ODD:
                 foreach (GameObject objectOfArray in reverseTrack)
                 {
                     objectOfArray.SetActive(true);

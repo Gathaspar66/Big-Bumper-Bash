@@ -66,16 +66,6 @@ public class MenuManager : MonoBehaviour
 
     public void LoadRace()
     {
-        switch ((Map)PlayerPrefs.GetInt("mapChoice"))
-        {
-            case Map.SNOW_MAP_NORMAL:
-                SceneManager.LoadScene("Level1");
-                
-                break;
-
-            case Map.SNOW_MAP_REVERSE:
-                SceneManager.LoadScene("Level1");
-                break;
-        }
+        TrackLoader.LoadTrack();
     }
 }

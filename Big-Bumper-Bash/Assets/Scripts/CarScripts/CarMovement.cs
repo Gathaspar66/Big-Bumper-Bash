@@ -52,10 +52,16 @@ public class CarMovement : MonoBehaviour
 
     public void GetInput()
     {
-        if (!isControlEnabled) return;
-
-        m_horizontalInput = Input.GetAxis("Horizontal");
-        m_verticalInput = Input.GetAxis("Vertical");
+        if (!isControlEnabled)
+        {
+            m_horizontalInput = 0;
+            m_verticalInput = 0;
+        }
+        else
+        {
+            m_horizontalInput = Input.GetAxis("Horizontal");
+            m_verticalInput = Input.GetAxis("Vertical");
+        }
     }
 
     public void EnableInput(bool enabled)

@@ -8,7 +8,8 @@ public class CheckpointManagerScript : MonoBehaviour
 
     public List<GameObject> checkpoints = new();
     public List<GameObject> mapNormal = new();
-    public List<GameObject> mapReverse = new();
+    public List<GameObject> mapReverse = new(); 
+    public List<GameObject> mapOdd = new();
     int checkpointNumber = 0;
 
     private void Awake()
@@ -38,15 +39,21 @@ public class CheckpointManagerScript : MonoBehaviour
     {
         switch (GameManager.gameManager.loadedTrackChoice)
         {
-            case Map.SNOW_MAP_NORMAL:
+            case Map.SNOW_MAP_NORMAL or Map.CONSTRUCTION_MAP_NORMAL or Map.TEST_TRACK_MAP:
 
                 checkpoints = mapNormal;
 
                 break;
 
-            case Map.SNOW_MAP_REVERSE:
+            case Map.SNOW_MAP_REVERSE or Map.CONSTRUCTION_MAP_REVERSE:
 
                 checkpoints = mapReverse;
+
+                break;
+
+            case Map.SNOW_MAP_ODD or Map.CONSTRUCTION_MAP_ODD:
+
+                checkpoints = mapOdd;
 
                 break;
         }
@@ -59,6 +66,7 @@ public class CheckpointManagerScript : MonoBehaviour
     {
         DeactivateCheckpointsList(mapNormal);
         DeactivateCheckpointsList(mapReverse);
+        DeactivateCheckpointsList(mapOdd);
     }
 
     void DeactivateCheckpointsList(List<GameObject> list)
@@ -68,6 +76,7 @@ public class CheckpointManagerScript : MonoBehaviour
             checkpoint.SetActive(false);
         }
     }
+
     public Transform GetFirstCheckpointPosition()
     {
         if (checkpoints.Count > 0)
@@ -81,6 +90,7 @@ public class CheckpointManagerScript : MonoBehaviour
             return null;
         }
     }
+
     public void OnCheckpointReached()
     {
         if (IsLastCheckpointReached())
@@ -104,6 +114,4 @@ public class CheckpointManagerScript : MonoBehaviour
     {
         GameManager.gameManager.OnRaceFinished();
     }
-
-   
 }

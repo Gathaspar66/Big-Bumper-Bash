@@ -77,15 +77,9 @@ public class GameManager : MonoBehaviour
 
     public void OnRaceStarted()
     {
-        CarManagerScript.CarManager.SetActiveCarMovement();
+        CarManagerScript.CarManager.SetActiveCarMovement(true);
         StopWatchScript.StopWatch.StartTime();
     }
-
-    public void OnRaceFinished()
-    {
-        StopWatchScript.StopWatch.StopTime();
-    }
-
 
     public GameObject GetPlayerCar()
     {
@@ -95,5 +89,12 @@ public class GameManager : MonoBehaviour
     public void SetPlayerCar(GameObject car)
     {
         playerCar = car;
+    }
+
+    public void OnRaceFinished()
+    {
+        RaceWidgetManagerScript.raceWidgetManager.OnRaceFinished();
+        CarManagerScript.CarManager.SetActiveCarMovement(false);
+        IngameMenuScript.ingameMenu.OnLevelEnded();
     }
 }

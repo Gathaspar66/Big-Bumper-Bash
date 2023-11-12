@@ -36,10 +36,9 @@ public class CarManagerScript : MonoBehaviour
         SetWeather();
     }
 
-    public void SetActiveCarMovement()
+    public void SetActiveCarMovement(bool enabled)
     {
-        //CarMovement.isControlEnabled = true;
-        GameManager.gameManager.GetPlayerCar().GetComponent<CarMovement>().EnableInput(true);
+        GameManager.gameManager.GetPlayerCar().GetComponent<CarMovement>().EnableInput(enabled);
     }
 
     public void SpawnCar()
