@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -34,8 +35,6 @@ public class RaceWidgetManagerScript : MonoBehaviour
     public void SetupWidgets()
     {
         switch (GameManager.gameManager.loadedGameModeChoice)
-
-
         {
             case GameMode.FREEPLAY:
 
@@ -60,5 +59,10 @@ public class RaceWidgetManagerScript : MonoBehaviour
         miniMap.SetActive(false);
         countdown.SetActive(false);
         stopWatch.SetActive(false);
+    }
+
+    internal void OnRaceStarted()
+    {
+        if (StopWatchScript.StopWatch != null) StopWatchScript.StopWatch.StartTime();
     }
 }

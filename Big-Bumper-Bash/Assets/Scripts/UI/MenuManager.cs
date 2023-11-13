@@ -53,9 +53,9 @@ public class MenuManager : MonoBehaviour
         PlayerPrefs.SetInt("modeChoice", (int)modeChoice.modeChoice);
     }
 
-    public void ChooseMap(EnumMapChoice mapChoice)
+    public void ChooseMap(int mapChoice)
     {
-        PlayerPrefs.SetInt("mapChoice", (int)mapChoice.mapChoice);
+        PlayerPrefs.SetInt("mapChoice", mapChoice);
         
     }
    

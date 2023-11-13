@@ -7,9 +7,9 @@ public class CheckpointManagerScript : MonoBehaviour
     public static CheckpointManagerScript checkpointManager { get; private set; }
 
     public List<GameObject> checkpoints = new();
-    public List<GameObject> mapNormal = new();
-    public List<GameObject> mapReverse = new(); 
-    public List<GameObject> mapOdd = new();
+    public GameObject mapNormal;
+    public GameObject mapReverse;
+    public GameObject mapOdd;
     int checkpointNumber = 0;
 
     private void Awake()
@@ -30,30 +30,31 @@ public class CheckpointManagerScript : MonoBehaviour
 
     public void Activate()
     {
-        SetupCheckpoints();
+        if (GameManager.gameManager.loadedGameModeChoice == GameMode.FREEPLAY) return;
         SelectCheckpointsForTrack();
         
     }
 
     public void SelectCheckpointsForTrack()
     {
+        Transform checkpointsToAdd = transform;
         switch (GameManager.gameManager.loadedTrackChoice)
         {
             case Map.SNOW_MAP_NORMAL or Map.CONSTRUCTION_MAP_NORMAL or Map.TEST_TRACK_MAP:
-
-                checkpoints = mapNormal;
+                mapNormal.SetActive(true);
+                AssignCheckpoints(mapNormal);
 
                 break;
 
             case Map.SNOW_MAP_REVERSE or Map.CONSTRUCTION_MAP_REVERSE:
-
-                checkpoints = mapReverse;
+                mapReverse.SetActive(true);
+                AssignCheckpoints(mapReverse);
 
                 break;
 
             case Map.SNOW_MAP_ODD or Map.CONSTRUCTION_MAP_ODD:
-
-                checkpoints = mapOdd;
+                mapOdd.SetActive(true);
+                AssignCheckpoints(mapOdd);
 
                 break;
         }
@@ -61,19 +62,11 @@ public class CheckpointManagerScript : MonoBehaviour
         checkpoints[0].SetActive(true);
     }
 
-
-    void SetupCheckpoints()
+    void AssignCheckpoints(GameObject source)
     {
-        DeactivateCheckpointsList(mapNormal);
-        DeactivateCheckpointsList(mapReverse);
-        DeactivateCheckpointsList(mapOdd);
-    }
-
-    void DeactivateCheckpointsList(List<GameObject> list)
-    {
-        foreach (GameObject checkpoint in list)
+        foreach(GameObject child in source.transform)
         {
-            checkpoint.SetActive(false);
+            checkpoints.Add(child);
         }
     }
 

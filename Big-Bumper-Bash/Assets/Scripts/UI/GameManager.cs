@@ -47,7 +47,6 @@ public class GameManager : MonoBehaviour
         loadedCarChoice = (Car)PlayerPrefs.GetInt("carChoice");
     }
 
-
     void MapInitialization()
     {
         SetupTrack();
@@ -78,7 +77,8 @@ public class GameManager : MonoBehaviour
     public void OnRaceStarted()
     {
         CarManagerScript.CarManager.SetActiveCarMovement(true);
-        StopWatchScript.StopWatch.StartTime();
+
+        RaceWidgetManagerScript.raceWidgetManager.OnRaceStarted();
     }
 
     public GameObject GetPlayerCar()

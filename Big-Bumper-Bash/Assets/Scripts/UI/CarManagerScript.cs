@@ -11,6 +11,11 @@ public class CarManagerScript : MonoBehaviour
     public GameObject ogierPrefab;
     public GameObject unikaczPrefab;
 
+    public GameObject startPositionNormal;
+    public GameObject startPositionReverse;
+    public GameObject startPositionOdd;
+    Transform startPosition;
+
     private GameObject playerCar;
     private Camera mainCamera;
 
@@ -32,8 +37,33 @@ public class CarManagerScript : MonoBehaviour
 
     public void Activate()
     {
+        SetCarPosition();
         SpawnCar();
         SetWeather();
+    }
+
+    private void SetCarPosition()
+    {
+        switch (GameManager.gameManager.loadedTrackChoice)
+        {
+            case Map.SNOW_MAP_NORMAL or Map.CONSTRUCTION_MAP_NORMAL or Map.TEST_TRACK_MAP:
+
+                startPosition = startPositionNormal.transform;
+
+                break;
+
+            case Map.SNOW_MAP_REVERSE or Map.CONSTRUCTION_MAP_REVERSE:
+
+                startPosition = startPositionReverse.transform;
+
+                break;
+
+            case Map.SNOW_MAP_ODD or Map.CONSTRUCTION_MAP_ODD:
+
+                startPosition = startPositionOdd.transform;
+
+                break;
+        }
     }
 
     public void SetActiveCarMovement(bool enabled)
@@ -43,24 +73,26 @@ public class CarManagerScript : MonoBehaviour
 
     public void SpawnCar()
     {
+        print("spawn car not ok ");
         switch (GameManager.gameManager.loadedCarChoice)
         {
             case Car.CAR1_OGIER:
                 playerCar = Instantiate(ogierPrefab,
-                    CheckpointManagerScript.checkpointManager.GetFirstCheckpointPosition().position,
-                    CheckpointManagerScript.checkpointManager.GetFirstCheckpointPosition().rotation);
+                    startPosition.position,
+                    startPosition.rotation);
 
 
                 break;
 
             case Car.CAR2_UNIKACZ:
                 playerCar = Instantiate(unikaczPrefab,
-                    CheckpointManagerScript.checkpointManager.GetFirstCheckpointPosition().position,
-                    CheckpointManagerScript.checkpointManager.GetFirstCheckpointPosition().rotation);
+                    startPosition.position,
+                    startPosition.rotation);
 
                 break;
         }
 
+        print("spawn car ok ");
         GameManager.gameManager.SetPlayerCar(playerCar);
     }
 
