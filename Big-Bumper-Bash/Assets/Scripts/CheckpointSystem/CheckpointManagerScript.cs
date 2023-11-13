@@ -70,20 +70,6 @@ public class CheckpointManagerScript : MonoBehaviour
         }
     }
 
-    public Transform GetFirstCheckpointPosition()
-    {
-        if (checkpoints.Count > 0)
-        {
-            GameObject firstCheckpoint = checkpoints[0];
-            return firstCheckpoint.transform;
-        }
-        else
-        {
-            Debug.LogError("List is empty.");
-            return null;
-        }
-    }
-
     public void OnCheckpointReached()
     {
         if (IsLastCheckpointReached())
