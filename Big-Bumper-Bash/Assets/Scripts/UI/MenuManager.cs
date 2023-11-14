@@ -59,9 +59,9 @@ public class MenuManager : MonoBehaviour
         
     }
    
-    public void ChooseCar(EnumCarChoice carChoice)
+    public void ChooseCar(int carChoice)
     {
-        PlayerPrefs.SetInt("carChoice", (int)carChoice.carChoice);
+        PlayerPrefs.SetInt("carChoice", (int)carChoice);
     }
 
     public void LoadRace()

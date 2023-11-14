@@ -2,36 +2,90 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using System;
 
 public class CarChoiceScript : MonoBehaviour
 {
-    public Button defaultSelected;
-    public GameObject car1Button, car2Button, backButton;
-    public GameObject backMenu;
+    //order corresponds to Enumerators.cs
+    public List<GameObject> carModels = new();
+    public List<string> carNames = new();
+    int currentChoice = 0;
+    int maxChoice = 0;
 
-    // Start is called before the first frame update
-    void Start()
+    public TextMeshProUGUI carName;
+    public TextMeshProUGUI carStats;
+
+    private void Start()
     {
+        maxChoice = carModels.Count - 1;
+        UpdateChoice();
+        UpdateTime();
+        UpdateCarModel();
     }
 
-    // Update is called once per frame
     void Update()
     {
-
+        GetInput();
     }
-
-    private void OnEnable()
+    
+    void GetInput()
     {
-        defaultSelected.GetComponent<Button>().Select();
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            ChangeChoice(-1);
+        }
+        if (Input.GetKeyDown(KeyCode.D)) 
+        {
+            ChangeChoice(1);
+        }
+        UpdateChoice();
+        UpdateTime();
+        UpdateCarModel();
     }
 
-    public void OnChooseCarButtonPressed(EnumCarChoice car)
+    public void ChangeChoice(int change)
     {
+        currentChoice += change;
+        if (currentChoice > maxChoice) currentChoice = 0;
+        if (currentChoice < 0) currentChoice = maxChoice;
     }
 
-    public void OnBackButtonPressed()
+    public void ChangeChoiceFromButton(int change)
     {
-        backMenu.SetActive(true);
-        gameObject.SetActive(false);
+        SelectFirstButton();
+        currentChoice += change;
+        if (currentChoice > maxChoice) currentChoice = 0;
+        if (currentChoice < 0) currentChoice = maxChoice;
     }
+
+    private void SelectFirstButton()
+    {
+        foreach (Transform child in transform)
+        {
+            child.GetComponent<Button>().Select();
+            break;
+        }
+    }
+
+    public void UpdateChoice()
+    {
+        carName.text = carNames[currentChoice];
+        MenuManager.menuManager.ChooseCar(currentChoice);
+    }
+
+    public void UpdateTime()
+    {
+        carStats.text = currentChoice.ToString();
+    }
+
+    private void UpdateCarModel()
+    {
+        foreach(GameObject car in carModels)
+        {
+            car.SetActive(false);
+        }
+        carModels[currentChoice].SetActive(true);
+    }
+
 }
