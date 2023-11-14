@@ -47,7 +47,6 @@ public class GameManager : MonoBehaviour
         loadedCarChoice = (Car)PlayerPrefs.GetInt("carChoice");
     }
 
-
     void MapInitialization()
     {
         SetupTrack();
@@ -77,15 +76,10 @@ public class GameManager : MonoBehaviour
 
     public void OnRaceStarted()
     {
-        CarManagerScript.CarManager.SetActiveCarMovement();
-        StopWatchScript.StopWatch.StartTime();
-    }
+        CarManagerScript.CarManager.SetActiveCarMovement(true);
 
-    public void OnRaceFinished()
-    {
-        StopWatchScript.StopWatch.StopTime();
+        RaceWidgetManagerScript.raceWidgetManager.OnRaceStarted();
     }
-
 
     public GameObject GetPlayerCar()
     {
@@ -95,5 +89,12 @@ public class GameManager : MonoBehaviour
     public void SetPlayerCar(GameObject car)
     {
         playerCar = car;
+    }
+
+    public void OnRaceFinished()
+    {
+        RaceWidgetManagerScript.raceWidgetManager.OnRaceFinished();
+        CarManagerScript.CarManager.SetActiveCarMovement(false);
+        IngameMenuScript.ingameMenu.OnLevelEnded();
     }
 }

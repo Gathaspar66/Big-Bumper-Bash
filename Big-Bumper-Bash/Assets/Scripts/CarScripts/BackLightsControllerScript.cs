@@ -5,7 +5,7 @@ public class BackLightsControllerScript : MonoBehaviour
 {
     private Material material;
     private Color init;
-    private Renderer renderer;
+    private Renderer rendererR;
 
     void Start()
     {
@@ -33,8 +33,8 @@ public class BackLightsControllerScript : MonoBehaviour
 
     private void SetInitialColor()
     {
-        renderer = GetComponent<Renderer>();
-        material = renderer.material;
+        rendererR = GetComponent<Renderer>();
+        material = rendererR.material;
         init = material.GetColor("_EmissionColor");
     }
 }

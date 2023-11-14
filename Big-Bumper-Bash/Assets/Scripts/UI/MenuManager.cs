@@ -53,29 +53,19 @@ public class MenuManager : MonoBehaviour
         PlayerPrefs.SetInt("modeChoice", (int)modeChoice.modeChoice);
     }
 
-    public void ChooseMap(EnumMapChoice mapChoice)
+    public void ChooseMap(int mapChoice)
     {
-        PlayerPrefs.SetInt("mapChoice", (int)mapChoice.mapChoice);
+        PlayerPrefs.SetInt("mapChoice", mapChoice);
         
     }
    
-    public void ChooseCar(EnumCarChoice carChoice)
+    public void ChooseCar(int carChoice)
     {
-        PlayerPrefs.SetInt("carChoice", (int)carChoice.carChoice);
+        PlayerPrefs.SetInt("carChoice", (int)carChoice);
     }
 
     public void LoadRace()
     {
-        switch ((Map)PlayerPrefs.GetInt("mapChoice"))
-        {
-            case Map.SNOW_MAP_NORMAL:
-                SceneManager.LoadScene("Level1");
-                
-                break;
-
-            case Map.SNOW_MAP_REVERSE:
-                SceneManager.LoadScene("Level1");
-                break;
-        }
+        TrackLoader.LoadTrack();
     }
 }

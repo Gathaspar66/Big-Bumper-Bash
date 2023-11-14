@@ -7,8 +7,9 @@ public class CheckpointManagerScript : MonoBehaviour
     public static CheckpointManagerScript checkpointManager { get; private set; }
 
     public List<GameObject> checkpoints = new();
-    public List<GameObject> mapNormal = new();
-    public List<GameObject> mapReverse = new();
+    public GameObject mapNormal;
+    public GameObject mapReverse;
+    public GameObject mapOdd;
     int checkpointNumber = 0;
 
     private void Awake()
@@ -29,24 +30,31 @@ public class CheckpointManagerScript : MonoBehaviour
 
     public void Activate()
     {
-        SetupCheckpoints();
+        if (GameManager.gameManager.loadedGameModeChoice == GameMode.FREEPLAY) return;
         SelectCheckpointsForTrack();
         
     }
 
     public void SelectCheckpointsForTrack()
     {
+        Transform checkpointsToAdd = transform;
         switch (GameManager.gameManager.loadedTrackChoice)
         {
-            case Map.SNOW_MAP_NORMAL:
-
-                checkpoints = mapNormal;
+            case Map.SNOW_MAP_NORMAL or Map.CONSTRUCTION_MAP_NORMAL or Map.TEST_TRACK_MAP:
+                mapNormal.SetActive(true);
+                AssignCheckpoints(mapNormal);
 
                 break;
 
-            case Map.SNOW_MAP_REVERSE:
+            case Map.SNOW_MAP_REVERSE or Map.CONSTRUCTION_MAP_REVERSE:
+                mapReverse.SetActive(true);
+                AssignCheckpoints(mapReverse);
 
-                checkpoints = mapReverse;
+                break;
+
+            case Map.SNOW_MAP_ODD or Map.CONSTRUCTION_MAP_ODD:
+                mapOdd.SetActive(true);
+                AssignCheckpoints(mapOdd);
 
                 break;
         }
@@ -54,33 +62,14 @@ public class CheckpointManagerScript : MonoBehaviour
         checkpoints[0].SetActive(true);
     }
 
+    void AssignCheckpoints(GameObject source)
+    {
+        foreach(GameObject child in source.transform)
+        {
+            checkpoints.Add(child);
+        }
+    }
 
-    void SetupCheckpoints()
-    {
-        DeactivateCheckpointsList(mapNormal);
-        DeactivateCheckpointsList(mapReverse);
-    }
-
-    void DeactivateCheckpointsList(List<GameObject> list)
-    {
-        foreach (GameObject checkpoint in list)
-        {
-            checkpoint.SetActive(false);
-        }
-    }
-    public Transform GetFirstCheckpointPosition()
-    {
-        if (checkpoints.Count > 0)
-        {
-            GameObject firstCheckpoint = checkpoints[0];
-            return firstCheckpoint.transform;
-        }
-        else
-        {
-            Debug.LogError("List is empty.");
-            return null;
-        }
-    }
     public void OnCheckpointReached()
     {
         if (IsLastCheckpointReached())
@@ -104,6 +93,4 @@ public class CheckpointManagerScript : MonoBehaviour
     {
         GameManager.gameManager.OnRaceFinished();
     }
-
-   
 }

@@ -3,25 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System;
 
-public class CarChoiceScript : MonoBehaviour
+public class LevelChoiceScript : MonoBehaviour
 {
     //order corresponds to Enumerators.cs
-    public List<GameObject> carModels = new();
-    public List<string> carNames = new();
+    public List<Texture> levelTextures = new();
+    public List<string> levelNames = new();
     int currentChoice = 0;
     int maxChoice = 0;
 
-    public TextMeshProUGUI carName;
-    public TextMeshProUGUI carStats;
+    public RawImage mapThumbnail;
+    public TextMeshProUGUI mapName;
+    public TextMeshProUGUI mapTime;
 
     private void Start()
     {
-        maxChoice = carModels.Count - 1;
+        maxChoice = levelTextures.Count - 1;
         UpdateChoice();
         UpdateTime();
-        UpdateCarModel();
+        UpdateThumbnail();
     }
 
     void Update()
@@ -41,7 +41,7 @@ public class CarChoiceScript : MonoBehaviour
         }
         UpdateChoice();
         UpdateTime();
-        UpdateCarModel();
+        UpdateThumbnail();
     }
 
     public void ChangeChoice(int change)
@@ -70,22 +70,17 @@ public class CarChoiceScript : MonoBehaviour
 
     public void UpdateChoice()
     {
-        carName.text = carNames[currentChoice];
-        MenuManager.menuManager.ChooseCar(currentChoice);
+        mapName.text = levelNames[currentChoice];
+        MenuManager.menuManager.ChooseMap(currentChoice);
     }
 
     public void UpdateTime()
     {
-        carStats.text = currentChoice.ToString();
+        mapTime.text = currentChoice.ToString();
     }
 
-    private void UpdateCarModel()
+    public void UpdateThumbnail()
     {
-        foreach(GameObject car in carModels)
-        {
-            car.SetActive(false);
-        }
-        carModels[currentChoice].SetActive(true);
+        mapThumbnail.texture = levelTextures[currentChoice];
     }
-
 }
