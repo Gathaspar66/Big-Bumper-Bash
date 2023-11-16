@@ -54,7 +54,9 @@ public class CheckpointManagerScript : MonoBehaviour
 
             case Map.SNOW_MAP_ODD or Map.CONSTRUCTION_MAP_ODD:
                 mapOdd.SetActive(true);
+                print("map odd " + mapOdd);
                 AssignCheckpoints(mapOdd);
+                print("map odd 2 " + mapOdd);
 
                 break;
         }
@@ -64,6 +66,7 @@ public class CheckpointManagerScript : MonoBehaviour
 
     void AssignCheckpoints(GameObject source)
     {
+        print("ass cjheck ");
         foreach(GameObject child in source.transform)
         {
             checkpoints.Add(child);

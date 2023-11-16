@@ -83,4 +83,9 @@ public class LevelChoiceScript : MonoBehaviour
     {
         mapThumbnail.texture = levelTextures[currentChoice];
     }
+
+    public void SaveMapChoice()
+    {
+        MenuManager.menuManager.ChooseMap(currentChoice);
+    }
 }

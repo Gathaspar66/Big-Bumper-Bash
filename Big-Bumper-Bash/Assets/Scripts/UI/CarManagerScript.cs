@@ -73,7 +73,6 @@ public class CarManagerScript : MonoBehaviour
 
     public void SpawnCar()
     {
-        print("spawn car not ok ");
         switch (GameManager.gameManager.loadedCarChoice)
         {
             case Car.CAR1_OGIER:
@@ -92,7 +91,6 @@ public class CarManagerScript : MonoBehaviour
                 break;
         }
 
-        print("spawn car ok ");
         GameManager.gameManager.SetPlayerCar(playerCar);
     }
 
