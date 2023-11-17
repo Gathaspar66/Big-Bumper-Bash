@@ -64,9 +64,10 @@ public class CheckpointManagerScript : MonoBehaviour
 
     void AssignCheckpoints(GameObject source)
     {
-        foreach(GameObject child in source.transform)
+        foreach(Transform child in source.transform)
         {
-            checkpoints.Add(child);
+            checkpoints.Add(child.gameObject);
+            child.gameObject.SetActive(false);
         }
     }
 

@@ -56,7 +56,7 @@ public class TrackManagerScript : MonoBehaviour
 
             case Map.SNOW_MAP_ODD:
             case Map.CONSTRUCTION_MAP_ODD:
-                foreach (GameObject objectOfArray in reverseTrack)
+                foreach (GameObject objectOfArray in oddTrack)
                 {
                     objectOfArray.SetActive(true);
                 }

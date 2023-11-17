@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class MenuManager : MonoBehaviour
 {
     public static MenuManager menuManager { get; private set; }
+    public GameObject carContainerObject;
 
     private void Awake()
     {
@@ -31,7 +32,14 @@ public class MenuManager : MonoBehaviour
 
     public void ChangeMenu(GameObject newMenu)
     {
+        //hide all menu panels
         foreach (Transform menuChild in transform)
+        {
+            menuChild.gameObject.SetActive(false);
+        }
+
+        //hide all cars
+        foreach (Transform menuChild in carContainerObject.transform)
         {
             menuChild.gameObject.SetActive(false);
         }
