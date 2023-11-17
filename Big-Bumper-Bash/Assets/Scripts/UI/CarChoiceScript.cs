@@ -88,4 +88,9 @@ public class CarChoiceScript : MonoBehaviour
         carModels[currentChoice].SetActive(true);
     }
 
+    public void SaveCarChoice()
+    {
+        MenuManager.menuManager.ChooseCar(currentChoice);
+    }
+
 }

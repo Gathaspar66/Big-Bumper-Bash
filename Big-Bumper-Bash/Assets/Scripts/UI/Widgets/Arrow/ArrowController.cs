@@ -27,6 +27,7 @@ public class ArrowController : MonoBehaviour
     void Start()
     {
         car = GameManager.gameManager.GetPlayerCar().transform;
+        target = CheckpointManagerScript.checkpointManager.checkpoints[0].transform;
     }
 
 
