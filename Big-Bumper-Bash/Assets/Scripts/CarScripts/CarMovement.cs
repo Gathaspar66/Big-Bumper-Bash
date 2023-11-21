@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CarMovement : MonoBehaviour
@@ -20,12 +21,15 @@ public class CarMovement : MonoBehaviour
     public Transform wheelBackLeft;
     public Transform wheelBackRight;
 
-    [Header("Vehicle settings")] public float maxSteerAngle = 30;
+    [Header("Vehicle settings")] public AnimationCurve maxSteerAngle;
     public float motorForce = 1500;
 
     public Vector3 centerOfMass;
     public Rigidbody carRigidBody;
     public bool isControlEnabled = false;
+    public Vector3 carSpeed;
+    float scalarSpeed;
+    public float animatedCurveValue;
 
     void Start()
     {
@@ -71,10 +75,15 @@ public class CarMovement : MonoBehaviour
 
     private void Steer()
     {
-        m_steeringAngle = maxSteerAngle * m_horizontalInput;
+        animatedCurveValue = maxSteerAngle.Evaluate(VehicleSpeedController.VehicleSpeed.scalarSpeed);
+
+
+        m_steeringAngle = animatedCurveValue * m_horizontalInput;
+
         colliderFrontLeft.steerAngle = m_steeringAngle;
         colliderFrontRight.steerAngle = m_steeringAngle;
     }
+
 
     private void Accelerate()
     {
