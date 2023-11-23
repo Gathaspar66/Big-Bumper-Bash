@@ -58,11 +58,11 @@ public class RaceWidgetManagerScript : MonoBehaviour
         arrow.SetActive(false);
         miniMap.SetActive(false);
         countdown.SetActive(false);
-        stopWatch.SetActive(false);
+        StopWatchScript.stopWatch.OnRaceFinished();
     }
 
     internal void OnRaceStarted()
     {
-        if (StopWatchScript.StopWatch != null) StopWatchScript.StopWatch.StartTime();
+        if (StopWatchScript.stopWatch != null) StopWatchScript.stopWatch.StartTime();
     }
 }

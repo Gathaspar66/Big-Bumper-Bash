@@ -76,7 +76,14 @@ public class LevelChoiceScript : MonoBehaviour
 
     public void UpdateTime()
     {
-        mapTime.text = currentChoice.ToString();
+        //mapTime.text = currentChoice.ToString();
+        string time = "--:--:--";
+        float loadedTime = PlayerPrefs.GetFloat("bestTime" + PlayerPrefs.GetInt("mapChoice"));
+        if(loadedTime > 0)
+        {
+            time = loadedTime.ToString();
+        }
+        mapTime.text = "Best time: " + time;
     }
 
     public void UpdateThumbnail()

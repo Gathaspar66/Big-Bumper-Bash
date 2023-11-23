@@ -1198,10 +1198,10 @@ RectTransform:
   m_Father: {fileID: 7887788225912056620}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 296.0006, y: 8.631195}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 523.2, y: 8.631195}
+  m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9199944780468070281
 CanvasRenderer:
@@ -1603,8 +1603,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 296.0006, y: 92.23123}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 444, y: 92.23123}
+  m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5616546037622522790
 CanvasRenderer:
@@ -4526,6 +4526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edabfad2c4eea0a45873d7928d37459c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carContainerObject: {fileID: 0}
 --- !u!1 &7887788227119752634
 GameObject:
   m_ObjectHideFlags: 0

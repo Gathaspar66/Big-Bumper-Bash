@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        print( PlayerPrefs.GetFloat("bestTime" + PlayerPrefs.GetInt("mapChoice")));
         DebugLoadedSettings();
 
         LoadTrackSetting();
@@ -96,5 +97,17 @@ public class GameManager : MonoBehaviour
         RaceWidgetManagerScript.raceWidgetManager.OnRaceFinished();
         CarManagerScript.CarManager.SetActiveCarMovement(false);
         IngameMenuScript.ingameMenu.OnLevelEnded();
+    }
+
+    public void SaveBestTime(float currentTime)
+    {
+        float bestTime = PlayerPrefs.GetFloat("bestTime" + PlayerPrefs.GetInt("mapChoice"));
+        print("time check, current: " + currentTime + " best: " + bestTime);
+        if (bestTime == 0 || currentTime < bestTime)
+        {
+            print("new best time");
+            PlayerPrefs.SetFloat("bestTime" + PlayerPrefs.GetInt("mapChoice"), currentTime);
+        }
+
     }
 }
