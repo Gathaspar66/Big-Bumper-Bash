@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
 
     void SetupCar()
     {
-        CarManagerScript.CarManager.Activate();
+        CarManagerScript.carManager.Activate();
     }
 
     void SetupWidgets()
@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
 
     public void OnRaceStarted()
     {
-        CarManagerScript.CarManager.SetActiveCarMovement(true);
+        CarManagerScript.carManager.SetActiveCarMovement(true);
 
         RaceWidgetManagerScript.raceWidgetManager.OnRaceStarted();
     }
@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviour
     public void OnRaceFinished()
     {
         RaceWidgetManagerScript.raceWidgetManager.OnRaceFinished();
-        CarManagerScript.CarManager.SetActiveCarMovement(false);
+        CarManagerScript.carManager.SetActiveCarMovement(false);
         IngameMenuScript.ingameMenu.OnLevelEnded();
     }
 }

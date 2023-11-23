@@ -79,6 +79,7 @@ public class CheckpointManagerScript : MonoBehaviour
         }
         else
         {
+            CarManagerScript.carManager.SetRespawnLocation(checkpoints[checkpointNumber]);
             checkpointNumber++;
             ArrowController.arrowController.SetUpTarget(checkpoints[checkpointNumber]);
             checkpoints[checkpointNumber].SetActive(true);
