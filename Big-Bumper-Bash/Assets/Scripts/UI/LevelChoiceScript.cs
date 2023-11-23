@@ -7,12 +7,14 @@ using TMPro;
 public class LevelChoiceScript : MonoBehaviour
 {
     //order corresponds to Enumerators.cs
-    public List<Texture> levelTextures = new();
+    //public List<Texture> levelTextures = new();
+    public List<Material> levelTextures = new();
     public List<string> levelNames = new();
     int currentChoice = 0;
     int maxChoice = 0;
 
-    public RawImage mapThumbnail;
+    //public RawImage mapThumbnail;
+    public GameObject screen;
     public TextMeshProUGUI mapName;
     public TextMeshProUGUI mapTime;
 
@@ -63,8 +65,11 @@ public class LevelChoiceScript : MonoBehaviour
     {
         foreach (Transform child in transform)
         {
-            child.GetComponent<Button>().Select();
-            break;
+            if (child.TryGetComponent(out Button btn))
+            {
+                btn.Select();
+                break;
+            }
         }
     }
 
@@ -81,7 +86,8 @@ public class LevelChoiceScript : MonoBehaviour
 
     public void UpdateThumbnail()
     {
-        mapThumbnail.texture = levelTextures[currentChoice];
+        //mapThumbnail.texture = levelTextures[currentChoice];
+        screen.GetComponent<Renderer>().material = levelTextures[currentChoice];
     }
 
     public void SaveMapChoice()

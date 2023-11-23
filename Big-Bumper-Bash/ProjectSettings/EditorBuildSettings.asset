@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Construction_Map.unity
     guid: e221948892725e74682d3fce2628c7ea
+  - enabled: 1
+    path: Assets/Scenes/Menu_construction.unity
+    guid: d7e54df22ef510a44bb35e0138ccdcf4
+  - enabled: 1
+    path: Assets/Scenes/Menu_Snow.unity
+    guid: 20d143fb4d1229c4bbc36e0169096454
   m_configObjects: {}
