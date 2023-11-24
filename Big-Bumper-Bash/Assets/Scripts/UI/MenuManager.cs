@@ -8,6 +8,11 @@ public class MenuManager : MonoBehaviour
 {
     public static MenuManager menuManager { get; private set; }
     public GameObject carContainerObject;
+    public Vector3 lastCameraLocation, currentCameraLocation;
+    public Quaternion lastCameraRotation, currentCameraRotation;
+    float cameraSpeed = 1;
+    float cameraMovementLerp = 0;
+    bool moveCamera = false;
 
     private void Awake()
     {
@@ -21,12 +26,43 @@ public class MenuManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        //kamera lerpa do lokacji aktualnej i jakis bool czy cos, lerp powinien byc 100% accurate do lokacji i rotacji
+        //czyli git 
+        MoveCamera();
+    }
+
+    void MoveCamera()
+    {
+        if (!moveCamera) return;
+
+        cameraMovementLerp += Time.deltaTime * cameraSpeed;
+        Camera.main.transform.position = Vector3.Lerp(lastCameraLocation, currentCameraLocation, cameraMovementLerp);
+        Camera.main.transform.rotation = Quaternion.Lerp(lastCameraRotation, currentCameraRotation, cameraMovementLerp);
+
+        if(cameraMovementLerp >= 1) moveCamera = false;
+    }
+
+    void StartCameraMovement(GameObject newCam)
+    {
+        lastCameraLocation = Camera.main.transform.position;
+        currentCameraLocation = newCam.transform.position;
+        lastCameraRotation = Camera.main.transform.rotation;
+        currentCameraRotation = newCam.transform.rotation;
+        cameraMovementLerp = 0;
+        moveCamera = true;
+    }
+
     private void SelectFirstButton(GameObject parent)
     {
         foreach (Transform child in parent.transform)
         {
-            child.GetComponent<Button>().Select();
-            break;
+            if (child.TryGetComponent(out Button btn))
+            {
+                btn.Select();
+                break;
+            }
         }
     }
 
@@ -45,6 +81,9 @@ public class MenuManager : MonoBehaviour
         }
 
         newMenu.SetActive(true);
+
+        StartCameraMovement(newMenu.GetComponent<GetMenuCamera>().GetCamera());
+
         SelectFirstButton(newMenu);
         if (newMenu.TryGetComponent<IActivable>(out IActivable component))
         {
