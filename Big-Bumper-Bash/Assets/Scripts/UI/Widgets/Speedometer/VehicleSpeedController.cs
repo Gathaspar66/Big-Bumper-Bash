@@ -8,8 +8,20 @@ public class VehicleSpeedController : MonoBehaviour
     public Rigidbody carRigidbody;
     public TextMeshProUGUI speedText;
     private Vector3 carSpeed;
-    float scalarSpeed;
+    public float scalarSpeed;
+    public static VehicleSpeedController VehicleSpeed { get; private set; }
 
+    private void Awake()
+    {
+        if (VehicleSpeed != null && VehicleSpeed != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            VehicleSpeed = this;
+        }
+    }
 
     void Update()
     {
