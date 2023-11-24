@@ -63,8 +63,11 @@ public class CarChoiceScript : MonoBehaviour
     {
         foreach (Transform child in transform)
         {
-            child.GetComponent<Button>().Select();
-            break;
+            if (child.TryGetComponent(out Button btn))
+            {
+                btn.Select();
+                break;
+            }
         }
     }
 

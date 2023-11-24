@@ -15,23 +15,41 @@ public class CarManagerScript : MonoBehaviour
     public GameObject startPositionReverse;
     public GameObject startPositionOdd;
     Transform startPosition;
+    Transform respawnPoint;
+    bool canRespawn = false;
 
     private GameObject playerCar;
     private Camera mainCamera;
 
     public GameObject snow;
-    public static CarManagerScript CarManager { get; private set; }
+    public static CarManagerScript carManager { get; private set; }
 
 
     private void Awake()
     {
-        if (CarManager != null && CarManager != this)
+        if (carManager != null && carManager != this)
         {
             Destroy(this);
         }
         else
         {
-            CarManager = this;
+            carManager = this;
+        }
+    }
+
+    private void Update()
+    {
+        GetInput();
+    }
+
+    void GetInput()
+    {
+        if (!canRespawn) return;
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            //auto reset from falling out of the map should bypass this
+            if (GameManager.gameManager.GetPlayerCar().GetComponent<Rigidbody>().velocity.magnitude > 1) return;
+            ResetCar();
         }
     }
 
@@ -40,6 +58,24 @@ public class CarManagerScript : MonoBehaviour
         SetCarPosition();
         SpawnCar();
         SetWeather();
+    }
+
+    public void ResetCar()
+    {
+        GameManager.gameManager.GetPlayerCar().GetComponent<Rigidbody>().isKinematic = true;
+        GameManager.gameManager.GetPlayerCar().transform.position = respawnPoint.transform.position;
+        GameManager.gameManager.GetPlayerCar().transform.rotation = respawnPoint.transform.rotation;
+        GameManager.gameManager.GetPlayerCar().GetComponent<Rigidbody>().isKinematic = false;
+    }
+
+    public void SetRespawnLocation(GameObject checkpoint)
+    {
+        SetRespawnLocation(checkpoint.transform);
+    }
+
+    public void SetRespawnLocation(Transform transform)
+    {
+        respawnPoint = transform;
     }
 
     private void SetCarPosition()
@@ -64,11 +100,14 @@ public class CarManagerScript : MonoBehaviour
 
                 break;
         }
+
+        SetRespawnLocation(startPosition);
     }
 
     public void SetActiveCarMovement(bool enabled)
     {
         GameManager.gameManager.GetPlayerCar().GetComponent<CarMovement>().EnableInput(enabled);
+        canRespawn = enabled;
     }
 
     public void SpawnCar()

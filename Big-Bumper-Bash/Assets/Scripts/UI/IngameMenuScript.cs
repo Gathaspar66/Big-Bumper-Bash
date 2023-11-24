@@ -48,8 +48,11 @@ public class IngameMenuScript : MonoBehaviour
     {
         foreach (Transform child in parent.transform)
         {
-            child.GetComponent<Button>().Select();
-            break;
+            if(child.TryGetComponent(out Button btn))
+            {
+                btn.Select();
+                break;
+            }
         }
     }
 
