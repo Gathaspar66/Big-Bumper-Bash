@@ -8,29 +8,26 @@ public class StopWatchScript : MonoBehaviour
     float timeElapsed = 0f;
     private bool startCountTime = false;
     public TextMeshProUGUI timeText;
-    public static StopWatchScript StopWatch { get; private set; }
+    public static StopWatchScript stopWatch { get; private set; }
     public int seconds;
     public int milliseconds;
 
     private void Awake()
     {
-        if (StopWatch != null && StopWatch != this)
+        if (stopWatch != null && stopWatch != this)
         {
             Destroy(this);
         }
         else
         {
-            StopWatch = this;
+            stopWatch = this;
         }
     }
 
 
     public void Update()
     {
-        if (startCountTime)
-        {
-            TimeCount();
-        }
+        TimeCount();
     }
 
     public void StartTime()
@@ -38,14 +35,17 @@ public class StopWatchScript : MonoBehaviour
         startCountTime = true;
     }
 
-    public void StopTime()
+    public void OnRaceFinished()
     {
         startCountTime = false;
+        GameManager.gameManager.SaveBestTime(timeElapsed);
     }
 
 
     public void TimeCount()
     {
+        if (!startCountTime) return;
+
         timeElapsed += Time.deltaTime;
 
         ShowTime(timeElapsed);
@@ -58,4 +58,5 @@ public class StopWatchScript : MonoBehaviour
         milliseconds = Mathf.FloorToInt((timeElapsed - seconds) * 1000);
         timeText.text = "Time: " + seconds.ToString("D2") + "." + milliseconds.ToString("D3") + "s";
     }
+
 }
