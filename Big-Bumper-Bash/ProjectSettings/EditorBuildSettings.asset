@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: a5788ed1aa59979479104bc389aecb35
   - enabled: 1
-    path: Assets/SCENES/TestTrack_Map.unity
+    path: Assets/Scenes/TestTrack_Map.unity
     guid: d1fa0999880018f4abc8fb515c20b2a0
   - enabled: 1
     path: Assets/Scenes/Snow_Map.unity
