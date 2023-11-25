@@ -3205,7 +3205,7 @@ GameObject:
   - component: {fileID: 7119301405555968072}
   - component: {fileID: 3975505983449657834}
   m_Layer: 0
-  m_Name: TribunePrefab
+  m_Name: tribunePrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
