@@ -162,7 +162,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraTarget: {fileID: 861056371}
-  car: {fileID: 8323483472438571066}
   offset: {x: 0, y: 1, z: -3.3}
   followSpeed: 10
 --- !u!114 &1818686558
@@ -887,7 +886,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a17f67f1dc5ce0041b44c225245e99b2, type: 2}
+  - {fileID: 2100000, guid: 2bdc54cf6b69e874e92d1caa28b013b3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1152,11 +1151,18 @@ MonoBehaviour:
   wheelFrontRight: {fileID: 8152233132724326388}
   wheelBackLeft: {fileID: 2106563063104112230}
   wheelBackRight: {fileID: 1939071970527014129}
-  maxSteerAngle: 30
+  maxSteerAngle:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   motorForce: 1500
   centerOfMass: {x: 0, y: 0, z: 0}
   carRigidBody: {fileID: 0}
   isControlEnabled: 0
+  carSpeed: {x: 0, y: 0, z: 0}
+  animatedCurveValue: 0
 --- !u!1 &9109540673488672634
 GameObject:
   m_ObjectHideFlags: 0

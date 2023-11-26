@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8475449443068159382}
   - component: {fileID: 3372560631691027247}
   - component: {fileID: 9100150702118660172}
-  - component: {fileID: 4273809284776422065}
   m_Layer: 0
   m_Name: lightsB
   m_TagString: Untagged
@@ -84,18 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4273809284776422065
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 239840579709202152}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f63f835a813a23041a58f0ed6a0074c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1121571148278773788
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,7 +213,6 @@ GameObject:
   - component: {fileID: 4071163597036060226}
   - component: {fileID: 2296569851242355757}
   - component: {fileID: 7804360720388869177}
-  - component: {fileID: 5279592466859828060}
   m_Layer: 0
   m_Name: lightsF
   m_TagString: Untagged
@@ -299,20 +285,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5279592466859828060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2292153231435492171}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea396656c5af407419bf4fe7ef7345e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftLight: {fileID: 0}
-  rightLight: {fileID: 0}
 --- !u!1 &4475001658310046414
 GameObject:
   m_ObjectHideFlags: 0

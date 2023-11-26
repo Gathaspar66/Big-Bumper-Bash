@@ -83,19 +83,19 @@ public class CarManagerScript : MonoBehaviour
     {
         switch (GameManager.gameManager.loadedTrackChoice)
         {
-            case Map.SNOW_MAP_NORMAL or Map.CONSTRUCTION_MAP_NORMAL or Map.TEST_TRACK_MAP:
+            case Map.SNOW_MAP_NORMAL or Map.CONSTRUCTION_MAP_NORMAL or Map.TEST_TRACK_MAP_NORMAL:
 
                 startPosition = startPositionNormal.transform;
 
                 break;
 
-            case Map.SNOW_MAP_REVERSE or Map.CONSTRUCTION_MAP_REVERSE:
+            case Map.SNOW_MAP_REVERSE or Map.CONSTRUCTION_MAP_REVERSE or Map.TEST_TRACK_MAP_REVERSE:
 
                 startPosition = startPositionReverse.transform;
 
                 break;
 
-            case Map.SNOW_MAP_ODD or Map.CONSTRUCTION_MAP_ODD:
+            case Map.SNOW_MAP_ODD or Map.CONSTRUCTION_MAP_ODD or Map.TEST_TRACK_MAP_ODD:
 
                 startPosition = startPositionOdd.transform;
 
@@ -152,12 +152,18 @@ public class CarManagerScript : MonoBehaviour
                 Instantiate(snow, mainCamera.transform.position, mainCamera.transform.rotation,
                     mainCamera.transform);
 
-
                 break;
 
             case Map.SNOW_MAP_REVERSE:
 
+                Instantiate(snow, mainCamera.transform.position, mainCamera.transform.rotation,
+                    mainCamera.transform);
+                break;
 
+            case Map.SNOW_MAP_ODD:
+
+                Instantiate(snow, mainCamera.transform.position, mainCamera.transform.rotation,
+                    mainCamera.transform);
                 break;
         }
     }
