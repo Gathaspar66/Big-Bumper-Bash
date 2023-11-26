@@ -10,6 +10,7 @@ public class CarManagerScript : MonoBehaviour
 {
     public GameObject ogierPrefab;
     public GameObject unikaczPrefab;
+    public GameObject forkliftPrefab;
 
     public GameObject startPositionNormal;
     public GameObject startPositionReverse;
@@ -119,11 +120,17 @@ public class CarManagerScript : MonoBehaviour
                     startPosition.position,
                     startPosition.rotation);
 
-
                 break;
 
             case Car.CAR2_UNIKACZ:
                 playerCar = Instantiate(unikaczPrefab,
+                    startPosition.position,
+                    startPosition.rotation);
+
+                break;
+
+            case Car.CAR3_FORKLIFT:
+                playerCar = Instantiate(forkliftPrefab,
                     startPosition.position,
                     startPosition.rotation);
 

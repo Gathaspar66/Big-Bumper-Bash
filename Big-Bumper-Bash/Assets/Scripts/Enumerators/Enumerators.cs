@@ -6,7 +6,8 @@ using UnityEngine;
 public enum Car
 {
     CAR1_OGIER,
-    CAR2_UNIKACZ
+    CAR2_UNIKACZ,
+    CAR3_FORKLIFT
 }
 
 public enum Map
