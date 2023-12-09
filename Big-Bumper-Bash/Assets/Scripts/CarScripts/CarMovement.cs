@@ -21,15 +21,20 @@ public class CarMovement : MonoBehaviour
     public Transform wheelBackLeft;
     public Transform wheelBackRight;
 
+    [Header("Wheel Trails")] public TrailRenderer trailFrontLeft;
+    public TrailRenderer trailFrontRight;
+    public TrailRenderer trailBackLeft;
+    public TrailRenderer trailBackRight;
+
     [Header("Vehicle settings")] public AnimationCurve maxSteerAngle;
     public float motorForce = 1500;
 
     public Vector3 centerOfMass;
     public Rigidbody carRigidBody;
-    public bool isControlEnabled = false;
-    public Vector3 carSpeed;
-    float scalarSpeed;
+    public ParticleSystem wheelSmokeParticles;
     public float animatedCurveValue;
+    public bool isControlEnabled = false;
+
 
     void Start()
     {
@@ -41,11 +46,12 @@ public class CarMovement : MonoBehaviour
         GetInput();
     }
 
-    private void FixedUpdate()
+    private void LateUpdate()
     {
         Steer();
         Accelerate();
         UpdateWheelsPositions();
+        CheckWheelSlip();
     }
 
     private void SetupCenterOfMass()
@@ -108,5 +114,46 @@ public class CarMovement : MonoBehaviour
 
         transform.position = pos;
         transform.rotation = quat;
+    }
+
+    private void CheckWheelSlip()
+    {
+        CheckSingleWheelSlip(colliderFrontLeft, wheelFrontLeft, trailFrontLeft);
+        CheckSingleWheelSlip(colliderFrontRight, wheelFrontRight, trailFrontRight);
+        CheckSingleWheelSlip(colliderBackLeft, wheelBackLeft, trailBackLeft);
+        CheckSingleWheelSlip(colliderBackRight, wheelBackRight, trailBackRight);
+    }
+
+    private void CheckSingleWheelSlip(WheelCollider collider, Transform transform, TrailRenderer trail)
+    {
+        if (collider.GetGroundHit(out WheelHit hit))
+        {
+            if (Mathf.Abs(hit.sidewaysSlip) > 0.6f) // || Mathf.Abs(hit.forwardSlip) > 0.7f )
+            {
+                EmitWheelSmoke(transform.position, hit.normal);
+                CarSoundManager.carSoundManager.PlaySkidSound(true);
+                ToggleTrailEmission(trail, true);
+            }
+            else
+            {
+                CarSoundManager.carSoundManager.PlaySkidSound(false);
+                ToggleTrailEmission(trail, false);
+            }
+        }
+    }
+
+    private void EmitWheelSmoke(Vector3 position, Vector3 normal)
+    {
+        Quaternion rotation = Quaternion.LookRotation(normal);
+        ParticleSystem smoke = Instantiate(wheelSmokeParticles, position, rotation);
+        smoke.Play();
+
+        Destroy(smoke.gameObject, 0.2f);
+    }
+
+
+    private void ToggleTrailEmission(TrailRenderer trail, bool play)
+    {
+        trail.emitting = play;
     }
 }

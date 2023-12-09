@@ -22,8 +22,10 @@ class TrackLoader : MonoBehaviour
                 SceneManager.LoadScene("Construction_Map");
                 break;
 
-            case Map.TEST_TRACK_MAP:
-                SceneManager.LoadScene("Test_Track_Map");
+            case Map.TEST_TRACK_MAP_NORMAL:
+            case Map.TEST_TRACK_MAP_REVERSE:
+            case Map.TEST_TRACK_MAP_ODD:
+                SceneManager.LoadScene("TestTrack_Map");
                 break;
         }
     }

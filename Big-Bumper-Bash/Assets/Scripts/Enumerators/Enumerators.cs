@@ -6,7 +6,8 @@ using UnityEngine;
 public enum Car
 {
     CAR1_OGIER,
-    CAR2_UNIKACZ
+    CAR2_UNIKACZ,
+    CAR3_FORKLIFT
 }
 
 public enum Map
@@ -17,7 +18,9 @@ public enum Map
     CONSTRUCTION_MAP_NORMAL,
     CONSTRUCTION_MAP_REVERSE,
     CONSTRUCTION_MAP_ODD,
-    TEST_TRACK_MAP
+    TEST_TRACK_MAP_NORMAL,
+    TEST_TRACK_MAP_REVERSE,
+    TEST_TRACK_MAP_ODD
 }
 
 public enum GameMode

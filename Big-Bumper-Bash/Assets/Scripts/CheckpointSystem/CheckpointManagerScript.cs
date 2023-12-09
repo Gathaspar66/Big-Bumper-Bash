@@ -40,19 +40,19 @@ public class CheckpointManagerScript : MonoBehaviour
         Transform checkpointsToAdd = transform;
         switch (GameManager.gameManager.loadedTrackChoice)
         {
-            case Map.SNOW_MAP_NORMAL or Map.CONSTRUCTION_MAP_NORMAL or Map.TEST_TRACK_MAP:
+            case Map.SNOW_MAP_NORMAL or Map.CONSTRUCTION_MAP_NORMAL or Map.TEST_TRACK_MAP_NORMAL:
                 mapNormal.SetActive(true);
                 AssignCheckpoints(mapNormal);
 
                 break;
 
-            case Map.SNOW_MAP_REVERSE or Map.CONSTRUCTION_MAP_REVERSE:
+            case Map.SNOW_MAP_REVERSE or Map.CONSTRUCTION_MAP_REVERSE or Map.TEST_TRACK_MAP_REVERSE:
                 mapReverse.SetActive(true);
                 AssignCheckpoints(mapReverse);
 
                 break;
 
-            case Map.SNOW_MAP_ODD or Map.CONSTRUCTION_MAP_ODD:
+            case Map.SNOW_MAP_ODD or Map.CONSTRUCTION_MAP_ODD or Map.TEST_TRACK_MAP_ODD:
                 mapOdd.SetActive(true);
                 AssignCheckpoints(mapOdd);
 

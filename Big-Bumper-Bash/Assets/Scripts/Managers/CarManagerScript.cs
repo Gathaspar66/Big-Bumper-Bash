@@ -10,6 +10,7 @@ public class CarManagerScript : MonoBehaviour
 {
     public GameObject ogierPrefab;
     public GameObject unikaczPrefab;
+    public GameObject forkliftPrefab;
 
     public GameObject startPositionNormal;
     public GameObject startPositionReverse;
@@ -82,19 +83,19 @@ public class CarManagerScript : MonoBehaviour
     {
         switch (GameManager.gameManager.loadedTrackChoice)
         {
-            case Map.SNOW_MAP_NORMAL or Map.CONSTRUCTION_MAP_NORMAL or Map.TEST_TRACK_MAP:
+            case Map.SNOW_MAP_NORMAL or Map.CONSTRUCTION_MAP_NORMAL or Map.TEST_TRACK_MAP_NORMAL:
 
                 startPosition = startPositionNormal.transform;
 
                 break;
 
-            case Map.SNOW_MAP_REVERSE or Map.CONSTRUCTION_MAP_REVERSE:
+            case Map.SNOW_MAP_REVERSE or Map.CONSTRUCTION_MAP_REVERSE or Map.TEST_TRACK_MAP_REVERSE:
 
                 startPosition = startPositionReverse.transform;
 
                 break;
 
-            case Map.SNOW_MAP_ODD or Map.CONSTRUCTION_MAP_ODD:
+            case Map.SNOW_MAP_ODD or Map.CONSTRUCTION_MAP_ODD or Map.TEST_TRACK_MAP_ODD:
 
                 startPosition = startPositionOdd.transform;
 
@@ -119,11 +120,17 @@ public class CarManagerScript : MonoBehaviour
                     startPosition.position,
                     startPosition.rotation);
 
-
                 break;
 
             case Car.CAR2_UNIKACZ:
                 playerCar = Instantiate(unikaczPrefab,
+                    startPosition.position,
+                    startPosition.rotation);
+
+                break;
+
+            case Car.CAR3_FORKLIFT:
+                playerCar = Instantiate(forkliftPrefab,
                     startPosition.position,
                     startPosition.rotation);
 
@@ -145,12 +152,18 @@ public class CarManagerScript : MonoBehaviour
                 Instantiate(snow, mainCamera.transform.position, mainCamera.transform.rotation,
                     mainCamera.transform);
 
-
                 break;
 
             case Map.SNOW_MAP_REVERSE:
 
+                Instantiate(snow, mainCamera.transform.position, mainCamera.transform.rotation,
+                    mainCamera.transform);
+                break;
 
+            case Map.SNOW_MAP_ODD:
+
+                Instantiate(snow, mainCamera.transform.position, mainCamera.transform.rotation,
+                    mainCamera.transform);
                 break;
         }
     }
