@@ -1667,7 +1667,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2446489277246025328}
   - component: {fileID: 4560200093550610297}
-  - component: {fileID: 6060568124620644090}
   m_Layer: 0
   m_Name: CarSound
   m_TagString: Untagged
@@ -1786,25 +1785,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &6060568124620644090
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9111602737998978270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0f26bc3be991f64289e3d8984c9348a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skidSound: {fileID: 0}
-  carRigidbody: {fileID: 2311560740271296342}
-  minSpeed: 0.5
-  maxSpeed: 50
-  minPitch: 0.1
-  maxPitch: 2
-  carSound: {fileID: 0}
 --- !u!1001 &907642232108306277
 PrefabInstance:
   m_ObjectHideFlags: 0
