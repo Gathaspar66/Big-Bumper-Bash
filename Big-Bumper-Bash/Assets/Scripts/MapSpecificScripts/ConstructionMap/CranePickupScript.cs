@@ -7,7 +7,6 @@ public class CranePickupScript : MonoBehaviour
 {
     public GameObject craneArm;
     public GameObject magnet;
-    public Vector3 xd = new Vector3(1, 0, 0);
     GameObject car;
 
     void Start()
