@@ -20,7 +20,7 @@ public class CranePickupScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        car = other.gameObject;
+        car = other.gameObject.transform.root.gameObject;
         car.GetComponent<Rigidbody>().isKinematic = true;
         car.transform.position = transform.position;
         car.transform.rotation = Quaternion.Euler(0, 90, 0);
