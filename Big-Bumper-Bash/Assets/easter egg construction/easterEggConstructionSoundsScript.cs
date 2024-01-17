@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class easterEggConstructionSoundsScript : MonoBehaviour
 {
+    public GameObject ea;
     public AudioSource asrc;
     public List<AudioClip> clips = new List<AudioClip>();
     public List<ParticleSystem> part = new List<ParticleSystem>();
@@ -16,5 +17,10 @@ public class easterEggConstructionSoundsScript : MonoBehaviour
     {
         part[index].Play();
         asrc.PlayOneShot(clips[Random.Range(6, 8)], 0.4f);
+    }
+
+    public void EndAnim()
+    {
+        ea.GetComponent<easterEggConstructionScript>().EndAnim();
     }
 }
