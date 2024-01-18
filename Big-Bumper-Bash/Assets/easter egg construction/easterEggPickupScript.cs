@@ -11,7 +11,10 @@ public class easterEggPickupScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (GameManager.gameManager.loadedTrackChoice != Map.CONSTRUCTION_MAP_ODD)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame
