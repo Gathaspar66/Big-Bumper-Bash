@@ -2,20 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class easterEggPickupScript : MonoBehaviour
+public class easterEggPickupScript : MonoBehaviour, IActivable
 {
     public AudioClip ring;
     public GameObject trigger;
     public GameObject crane;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        if (GameManager.gameManager.loadedTrackChoice != Map.CONSTRUCTION_MAP_ODD)
-        {
-            gameObject.SetActive(false);
-        }
-    }
 
     // Update is called once per frame
     void Update()
@@ -30,5 +21,13 @@ public class easterEggPickupScript : MonoBehaviour
         trigger.SetActive(true);
         crane.SetActive(false);
         GetComponent<Collider>().enabled = false;
+    }
+
+    public void Activate()
+    {
+        if (GameManager.gameManager.loadedTrackChoice != Map.CONSTRUCTION_MAP_ODD)
+        {
+            gameObject.SetActive(false);
+        }
     }
 }
