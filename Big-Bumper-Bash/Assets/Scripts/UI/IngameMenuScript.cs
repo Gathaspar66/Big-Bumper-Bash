@@ -83,6 +83,7 @@ public class IngameMenuScript : MonoBehaviour
 
     public void LoadRace()
     {
+        Time.timeScale = 1;
         TrackLoader.LoadTrack();
     }
 
