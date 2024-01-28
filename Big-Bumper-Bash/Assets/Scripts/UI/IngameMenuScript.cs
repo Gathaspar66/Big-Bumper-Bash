@@ -78,6 +78,7 @@ public class IngameMenuScript : MonoBehaviour
 
     public void ExitGame()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
     }
 

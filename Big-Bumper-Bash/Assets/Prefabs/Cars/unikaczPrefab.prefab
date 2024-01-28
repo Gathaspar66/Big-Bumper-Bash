@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 861056371}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: cameraTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 1818686560}
   - component: {fileID: 1818686559}
   - component: {fileID: 1818686558}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MainCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -235,7 +235,7 @@ GameObject:
   - component: {fileID: 2106563063104112230}
   - component: {fileID: 7106426767828564484}
   - component: {fileID: 5707248426337630410}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: wheelBackLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -317,7 +317,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5463873594856558115}
   - component: {fileID: 5859072536228120675}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: colliderBackRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -381,7 +381,7 @@ GameObject:
   - component: {fileID: 3842803136820677456}
   - component: {fileID: 6664644357260668552}
   - component: {fileID: 3399518097199887948}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -463,7 +463,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2735566097962907712}
   - component: {fileID: 169634683422301827}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CarSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -591,7 +591,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1600851687654272606}
   - component: {fileID: 258551988069049769}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -688,7 +688,7 @@ GameObject:
   - component: {fileID: 8903482855951665453}
   - component: {fileID: 8186389119754127627}
   - component: {fileID: 5031288591007633275}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: backLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -800,7 +800,7 @@ GameObject:
   - component: {fileID: 8152233132724326388}
   - component: {fileID: 2258846240041486541}
   - component: {fileID: 1645387861823046210}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: wheelFrontRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -882,7 +882,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1818240756311878250}
   - component: {fileID: 5833266823751873885}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: colliderFrontLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -945,7 +945,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2825583474805470160}
   - component: {fileID: 6691768922605781345}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SkidSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -974,12 +974,11 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2129211091370794980}
-
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 96462c071809cb042b4ccd267a66df3d, type: 3}
-  m_PlayOnAwake: 0
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -991,7 +990,7 @@ AudioSource:
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -1000,7 +999,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 1e-45
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1008,8 +1007,125 @@ AudioSource:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 1
-      value: 0
+      time: 0.1
+      value: 1e-45
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.2
+      value: 1e-45
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.4
+      value: 1e-45
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.8
+      value: 1e-45
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1.6
+      value: 1e-45
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 3.2
+      value: 1e-45
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 6.4
+      value: 1e-45
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 12.8
+      value: 1e-45
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 25.6
+      value: 1e-45
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 51.2
+      value: 1e-45
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 102.4
+      value: 1e-45
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 204.8
+      value: 1e-45
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 409.6
+      value: 1e-45
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 500
+      value: 1e-45
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1075,7 +1191,7 @@ GameObject:
   - component: {fileID: 1969217687611761940}
   - component: {fileID: 3573938262328113505}
   - component: {fileID: 2381661163849771078}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: wheelFrontLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1157,7 +1273,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5831948080652152672}
   - component: {fileID: 2205878126935200864}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Spot Light (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1251,7 +1367,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6127879350813975525}
   - component: {fileID: 8371450897242434027}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: colliderFrontRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1316,7 +1432,7 @@ GameObject:
   - component: {fileID: 3293204793834512603}
   - component: {fileID: 1715991538290225725}
   - component: {fileID: 957810725607830824}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: frontLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1413,7 +1529,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3237519929600299598}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: wheelCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1450,7 +1566,7 @@ GameObject:
   - component: {fileID: 1939071970527014129}
   - component: {fileID: 4177632255211368710}
   - component: {fileID: 2262578966896033571}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: wheelBackRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1531,7 +1647,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1811412941484684039}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: wheels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1570,7 +1686,7 @@ GameObject:
   - component: {fileID: 7801305358130498296}
   - component: {fileID: 8789370829464299494}
   - component: {fileID: 14987191395975820}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: unikaczPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1713,7 +1829,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1643910407378727337}
   - component: {fileID: 2227133293562872997}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: colliderBackLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1776,6 +1892,10 @@ PrefabInstance:
     - target: {fileID: 544749466699133553, guid: 9efbaba2b05314d44bf2e15c677a3077, type: 3}
       propertyPath: m_Name
       value: TireTrailPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 544749466699133553, guid: 9efbaba2b05314d44bf2e15c677a3077, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 814843188743331031, guid: 9efbaba2b05314d44bf2e15c677a3077, type: 3}
       propertyPath: m_Time
@@ -1871,6 +1991,10 @@ PrefabInstance:
     - target: {fileID: 544749466699133553, guid: 9efbaba2b05314d44bf2e15c677a3077, type: 3}
       propertyPath: m_Name
       value: TireTrailPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 544749466699133553, guid: 9efbaba2b05314d44bf2e15c677a3077, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 544749466699133553, guid: 9efbaba2b05314d44bf2e15c677a3077, type: 3}
       propertyPath: m_IsActive
@@ -1972,6 +2096,10 @@ PrefabInstance:
       value: TireTrailPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 544749466699133553, guid: 9efbaba2b05314d44bf2e15c677a3077, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 544749466699133553, guid: 9efbaba2b05314d44bf2e15c677a3077, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -2069,6 +2197,10 @@ PrefabInstance:
     - target: {fileID: 544749466699133553, guid: 9efbaba2b05314d44bf2e15c677a3077, type: 3}
       propertyPath: m_Name
       value: TireTrailPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 544749466699133553, guid: 9efbaba2b05314d44bf2e15c677a3077, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 544749466699133553, guid: 9efbaba2b05314d44bf2e15c677a3077, type: 3}
       propertyPath: m_IsActive

@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public GameMode loadedGameModeChoice;
     public Car loadedCarChoice;
     public Transform startPosition;
-
+    public List<GameObject> miscObjects= new List<GameObject>();
     private void Awake()
     {
         if (gameManager != null && gameManager != this)
@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
 
         LoadTrackSetting();
         MapInitialization();
+        ActivateMiscObjects();
     }
 
     void DebugLoadedSettings()
@@ -110,4 +111,12 @@ public class GameManager : MonoBehaviour
         }
 
     }
+    private void ActivateMiscObjects()
+    {
+        foreach(GameObject i in miscObjects)
+        {
+            i.GetComponent<IActivable>().Activate();
+        }
+    }
+
 }

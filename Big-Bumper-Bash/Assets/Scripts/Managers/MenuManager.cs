@@ -93,6 +93,7 @@ public class MenuManager : MonoBehaviour
 
     public void ExitGame()
     {
+        Application.Quit();
     }
 
     public void ChooseGameMode(EnumModeChoice modeChoice)
