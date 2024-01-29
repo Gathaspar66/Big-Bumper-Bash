@@ -1,4 +1,3 @@
-**Game Description**
 Welcome to our Unity-based car game! This game promises thrilling experiences of driving various cars. Get behind the wheel and prepare for an exciting journey through diverse tracks and terrains.
 
 
