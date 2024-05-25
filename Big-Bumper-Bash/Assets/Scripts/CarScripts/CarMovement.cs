@@ -131,12 +131,12 @@ public class CarMovement : MonoBehaviour
             if (Mathf.Abs(hit.sidewaysSlip) > 0.6f) // || Mathf.Abs(hit.forwardSlip) > 0.7f )
             {
                 EmitWheelSmoke(transform.position, hit.normal);
-                CarSoundManager.carSoundManager.PlaySkidSound(true);
+                //CarSoundManager.carSoundManager.PlaySkidSound(true);
                 ToggleTrailEmission(trail, true);
             }
             else
             {
-                CarSoundManager.carSoundManager.PlaySkidSound(false);
+                //CarSoundManager.carSoundManager.PlaySkidSound(false);
                 ToggleTrailEmission(trail, false);
             }
         }

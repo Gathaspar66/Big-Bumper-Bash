@@ -1081,7 +1081,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0f26bc3be991f64289e3d8984c9348a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skidSound: {fileID: 1935203960998347547}
+  skidSound: {fileID: 0}
   carRigidbody: {fileID: 3709551718227530651}
   minSpeed: 0.5
   maxSpeed: 50

@@ -65000,9 +65000,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5cd8dd1f78e80b44a80316d4f98f471, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip1: {fileID: 8300000, guid: 779b464107626ff4f95f547302b8d1e1, type: 3}
-  clip2: {fileID: 8300000, guid: 7654cb8242389684f959df3e44f269f9, type: 3}
-  clip3: {fileID: 8300000, guid: 48f1259577843e044bc562571fdb7394, type: 3}
+  MainMusic: {fileID: 0}
+  loadedTrackChoice: 0
 --- !u!4 &1632508354
 Transform:
   m_ObjectHideFlags: 0
@@ -88029,6 +88028,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5677492123237219901, guid: 9dd4bfdda78dd14498e7fb31d4f80324, type: 3}
+      propertyPath: musicPrefab
+      value: 
+      objectReference: {fileID: 7488333360676395100, guid: 1d992afe920d831429a246ab37ef20d2, type: 3}
     - target: {fileID: 5677492123237219901, guid: 9dd4bfdda78dd14498e7fb31d4f80324, type: 3}
       propertyPath: miscObjects.Array.size
       value: 1

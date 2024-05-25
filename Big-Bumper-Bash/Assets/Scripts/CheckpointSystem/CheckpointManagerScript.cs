@@ -73,6 +73,9 @@ public class CheckpointManagerScript : MonoBehaviour
 
     public void OnCheckpointReached()
     {
+
+        SoundsManagerScript.soundsManager.PlayCheckPointMusic();
+
         if (IsLastCheckpointReached())
         {
             OnLastCheckpointReached();
