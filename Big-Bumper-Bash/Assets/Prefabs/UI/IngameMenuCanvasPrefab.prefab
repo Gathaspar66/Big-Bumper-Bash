@@ -1964,6 +1964,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3674610285046392826}
     m_Modifications:
+    - target: {fileID: 829246613955853924, guid: 85aac976e5699634fa2002905487e2c7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6095370992558227732, guid: 85aac976e5699634fa2002905487e2c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 295108398475064334}
+    - target: {fileID: 6095370992558227732, guid: 85aac976e5699634fa2002905487e2c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 6095370992558227732, guid: 85aac976e5699634fa2002905487e2c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: IngameMenuScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6095370992558227732, guid: 85aac976e5699634fa2002905487e2c7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 3674610283721489904}
     - target: {fileID: 8610204838431271090, guid: 85aac976e5699634fa2002905487e2c7, type: 3}
       propertyPath: m_Name
       value: OptionsMenu
@@ -2042,7 +2062,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8610204838431271091, guid: 85aac976e5699634fa2002905487e2c7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 450
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8610204838431271091, guid: 85aac976e5699634fa2002905487e2c7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2072,6 +2092,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 3674610283721489904}
+    - target: {fileID: 8646250540260415607, guid: 85aac976e5699634fa2002905487e2c7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85aac976e5699634fa2002905487e2c7, type: 3}
 --- !u!1 &3674610285653784352 stripped

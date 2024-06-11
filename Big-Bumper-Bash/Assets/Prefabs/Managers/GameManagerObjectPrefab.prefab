@@ -50,6 +50,8 @@ MonoBehaviour:
   loadedGameModeChoice: 0
   loadedCarChoice: 0
   startPosition: {fileID: 0}
+  miscObjects: []
+  SoundsManagerPrefab: {fileID: 4349312253516947227, guid: e972734ff63e56e49aa23c073dc7a8cc, type: 3}
 --- !u!114 &5677492123237219899
 MonoBehaviour:
   m_ObjectHideFlags: 0

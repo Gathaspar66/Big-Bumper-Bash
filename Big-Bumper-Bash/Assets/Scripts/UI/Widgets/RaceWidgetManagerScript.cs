@@ -11,6 +11,11 @@ public class RaceWidgetManagerScript : MonoBehaviour
     public GameObject speed;
     public GameObject countdown;
     public GameObject stopWatch;
+    public GameObject JoyStick;
+    public GameObject options;
+    public GameObject lights;
+    public GameObject BrakeAndGas;
+    public GameObject resetCar;
     public static RaceWidgetManagerScript raceWidgetManager { get; private set; }
 
     private void Awake()
@@ -40,6 +45,11 @@ public class RaceWidgetManagerScript : MonoBehaviour
 
                 speed.SetActive(true);
                 countdown.SetActive(true);
+                JoyStick.SetActive(true);
+                options.SetActive(true);
+                lights.SetActive(true);
+                BrakeAndGas.SetActive(true);
+                resetCar.SetActive(true);
                 break;
 
             case GameMode.RACE:
@@ -49,15 +59,27 @@ public class RaceWidgetManagerScript : MonoBehaviour
                 miniMap.SetActive(true);
                 countdown.SetActive(true);
                 stopWatch.SetActive(true);
+                JoyStick.SetActive(true);
+                options.SetActive(true);
+                lights.SetActive(true);
+                BrakeAndGas.SetActive(true);
+                resetCar.SetActive(true);
+
                 break;
         }
     }
+
     public void OnRaceFinished()
     {
         speed.SetActive(false);
         arrow.SetActive(false);
         miniMap.SetActive(false);
         countdown.SetActive(false);
+        JoyStick.SetActive(false);
+        options.SetActive(false);
+        lights.SetActive(false);
+        BrakeAndGas.SetActive(false);
+        resetCar.SetActive(false);
         StopWatchScript.stopWatch.OnRaceFinished();
     }
 

@@ -13,7 +13,8 @@ public class MenuManager : MonoBehaviour
     float cameraSpeed = 1;
     float cameraMovementLerp = 0;
     bool moveCamera = false;
-
+    public GameObject SoundsManagerPrefab;
+    
     private void Awake()
     {
         if (menuManager != null && menuManager != this)
@@ -25,7 +26,10 @@ public class MenuManager : MonoBehaviour
             menuManager = this;
         }
     }
-
+    private void Start()
+    {
+        SoundsManagerScript.soundsManager.PlayMenuMusic();
+    }
     private void Update()
     {
         //kamera lerpa do lokacji aktualnej i jakis bool czy cos, lerp powinien byc 100% accurate do lokacji i rotacji

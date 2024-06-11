@@ -1,33 +1,44 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class OptionsMenuScript : MonoBehaviour
 {
-    public Button defaultSelected;
-    public GameObject backButton;
-    public GameObject backMenu;
+    public static OptionsMenuScript optionsMenu { get; private set; }
+    public Slider masterVolumeSlider;
+    public Slider mainMusicSlider;
+    public Slider soundEffectsSldier;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
+        if (optionsMenu != null && optionsMenu != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            optionsMenu = this;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Start()
     {
-
+        masterVolumeSlider.value = SoundsManagerScript.soundsManager.masterVolume;
+        mainMusicSlider.value = SoundsManagerScript.soundsManager.mainMusicVolume;
+        soundEffectsSldier.value = SoundsManagerScript.soundsManager.soundEffectsVolume;
     }
 
-    private void OnEnable()
+    public void ChangeMasterVolume()
     {
-        defaultSelected.GetComponent<Button>().Select();
+        SoundsManagerScript.soundsManager.ChangeMasterVolume();
     }
 
-    public void OnBackButtonPressed()
+    public void ChangeMainMusic()
     {
-        backMenu.SetActive(true);
-        gameObject.SetActive(false);
+        SoundsManagerScript.soundsManager.ChangeMainMusic();
+    }
+
+    public void ChangeSoundEffect()
+    {
+        SoundsManagerScript.soundsManager.ChangeSoundEffect();
     }
 }

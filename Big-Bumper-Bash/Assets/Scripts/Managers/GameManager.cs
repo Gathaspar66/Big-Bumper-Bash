@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public Car loadedCarChoice;
     public Transform startPosition;
     public List<GameObject> miscObjects= new List<GameObject>();
+    public GameObject SoundsManagerPrefab;
     private void Awake()
     {
         if (gameManager != null && gameManager != this)
@@ -27,12 +28,13 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        print( PlayerPrefs.GetFloat("bestTime" + PlayerPrefs.GetInt("mapChoice")));
+        print(PlayerPrefs.GetFloat("bestTime" + PlayerPrefs.GetInt("mapChoice")));
         DebugLoadedSettings();
 
         LoadTrackSetting();
         MapInitialization();
         ActivateMiscObjects();
+        ActivateSounds();
     }
 
     void DebugLoadedSettings()
@@ -119,4 +121,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void ActivateSounds()
+    {
+        Instantiate(SoundsManagerPrefab);
+        SoundsManagerScript.soundsManager.PlayMusicOnTheMap(loadedTrackChoice);
+    }
 }

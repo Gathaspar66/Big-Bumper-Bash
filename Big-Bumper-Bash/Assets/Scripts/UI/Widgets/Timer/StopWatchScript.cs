@@ -56,7 +56,6 @@ public class StopWatchScript : MonoBehaviour
     {
         seconds = Mathf.FloorToInt(timeElapsed);
         milliseconds = Mathf.FloorToInt((timeElapsed - seconds) * 1000);
-        timeText.text = "Time: " + seconds.ToString("D2") + "." + milliseconds.ToString("D3") + "s";
+        timeText.text = seconds.ToString("D2") + "." + milliseconds.ToString("D3") + "s";
     }
-
 }
