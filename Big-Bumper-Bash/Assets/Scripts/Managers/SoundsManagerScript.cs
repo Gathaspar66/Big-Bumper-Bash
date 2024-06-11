@@ -1,20 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
+
+
 public class SoundsManagerScript : MonoBehaviour
 {
-    public AudioSource mainMusic;
-    public Map loadedTrackChoice;
-    public AudioClip menuMusic;
-    public AudioClip snowMapMusic;
-    public AudioClip constructionMapMusic;
-    public AudioClip testTracMusic;
-    public AudioClip checkPointMusic;
-    public static SoundsManagerScript soundsManager { get; private set; }
-    public float volume;
+    public AudioSource mainMusicSource;
+
     public AudioMixer AudioMixerPrefab;
-    
+
+    public AudioClip mainMenuClip;
+    public AudioClip snowMapClip;
+    public AudioClip constructionMapMusicClip;
+    public AudioClip testTracMusicClip;
+    public AudioClip checkPointClip;
+
+    public Slider masterVolumeSlider;
+    public Slider mainMusicVolumeSlider;
+    public Slider soundEffectsVolumeSlider;
+
+    public float masterVolume;
+    public float mainMusicVolume;
+    public float soundEffectsVolume;
+    public static SoundsManagerScript soundsManager { get; private set; }
+
     private void Awake()
     {
         if (soundsManager != null && soundsManager != this)
@@ -26,53 +35,81 @@ public class SoundsManagerScript : MonoBehaviour
             soundsManager = this;
         }
     }
-    private void Update()
-    {
-        AudioMixerPrefab.SetFloat("MasterVolume", volume);
-    }
+
     private void Start()
     {
-        mainMusic = GetComponent<AudioSource>();
-
+        mainMusicSource = GetComponent<AudioSource>();
+        LoadVolume();
     }
-    public void PlayMusic(Map loadedTrackChoice)
+
+    public void PlayMusicOnTheMap(Map loadedTrackChoice)
     {
         switch (loadedTrackChoice)
         {
             case Map.SNOW_MAP_NORMAL:
             case Map.SNOW_MAP_REVERSE:
             case Map.SNOW_MAP_ODD:
-                PlaySingleMusic(snowMapMusic);
+                PlaySingleMusic(snowMapClip);
                 break;
             case Map.CONSTRUCTION_MAP_NORMAL:
             case Map.CONSTRUCTION_MAP_REVERSE:
             case Map.CONSTRUCTION_MAP_ODD:
-                PlaySingleMusic(constructionMapMusic);
+                PlaySingleMusic(constructionMapMusicClip);
                 break;
             case Map.TEST_TRACK_MAP_NORMAL:
             case Map.TEST_TRACK_MAP_REVERSE:
             case Map.TEST_TRACK_MAP_ODD:
-                PlaySingleMusic(testTracMusic);
+                PlaySingleMusic(testTracMusicClip);
                 break;
         }
     }
+
     public void PlaySingleMusic(AudioClip music)
     {
-        mainMusic.clip = music;
-        mainMusic.Play();
-        
+        LoadVolume();
+        mainMusicSource.clip = music;
+        mainMusicSource.Play();
     }
+
     public void PlayMenuMusic()
     {
-        mainMusic.clip = menuMusic;
-        mainMusic.Play();
+        LoadVolume();
+        mainMusicSource.clip = mainMenuClip;
+        mainMusicSource.Play();
     }
 
-    public void PlayCheckPointMusic()
+    public void ChangeMasterVolume()
     {
-        mainMusic.clip = checkPointMusic;
-        mainMusic.Play();
+        AudioMixerPrefab.SetFloat("MasterVolume", PlayerPrefs.GetFloat("MasterVolume"));
+        SaveVolume("MasterVolume", OptionsMenuScript.optionsMenu.masterVolumeSlider.value);
     }
 
+    public void ChangeMainMusic()
+    {
+        AudioMixerPrefab.SetFloat("MainMusicVolume", PlayerPrefs.GetFloat("MainMusicVolume"));
+        SaveVolume("MainMusicVolume", OptionsMenuScript.optionsMenu.mainMusicSlider.value);
+    }
 
+    public void ChangeSoundEffect()
+    {
+        AudioMixerPrefab.SetFloat("SoundEffectsVolume", PlayerPrefs.GetFloat("SoundEffectsVolume"));
+        SaveVolume("SoundEffectsVolume", OptionsMenuScript.optionsMenu.soundEffectsSldier.value);
+    }
+
+    public void SaveVolume(string typeOfVolume, float volume)
+    {
+        PlayerPrefs.SetFloat(typeOfVolume, Mathf.Log10(volume)*20);
+    }
+
+    public void LoadVolume()
+    {
+        masterVolume = PlayerPrefs.GetFloat("MasterVolume");
+        AudioMixerPrefab.SetFloat("MasterVolume", masterVolume);
+
+        mainMusicVolume = PlayerPrefs.GetFloat("MainMusicVolume");
+        AudioMixerPrefab.SetFloat("MainMusicVolume", mainMusicVolume);
+
+        soundEffectsVolume = PlayerPrefs.GetFloat("SoundEffectsVolume");
+        AudioMixerPrefab.SetFloat("SoundEffectsVolume", soundEffectsVolume);
+    }
 }

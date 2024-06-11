@@ -124,6 +124,6 @@ public class GameManager : MonoBehaviour
     private void ActivateSounds()
     {
         Instantiate(SoundsManagerPrefab);
-        SoundsManagerScript.soundsManager.PlayMusic(loadedTrackChoice);
+        SoundsManagerScript.soundsManager.PlayMusicOnTheMap(loadedTrackChoice);
     }
 }

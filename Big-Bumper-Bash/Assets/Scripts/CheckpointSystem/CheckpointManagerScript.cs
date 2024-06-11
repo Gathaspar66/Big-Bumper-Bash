@@ -11,6 +11,7 @@ public class CheckpointManagerScript : MonoBehaviour
     public GameObject mapReverse;
     public GameObject mapOdd;
     int checkpointNumber = 0;
+    public AudioSource checkPointSource;
 
     private void Awake()
     {
@@ -32,7 +33,6 @@ public class CheckpointManagerScript : MonoBehaviour
     {
         if (GameManager.gameManager.loadedGameModeChoice == GameMode.FREEPLAY) return;
         SelectCheckpointsForTrack();
-        
     }
 
     public void SelectCheckpointsForTrack()
@@ -64,7 +64,7 @@ public class CheckpointManagerScript : MonoBehaviour
 
     void AssignCheckpoints(GameObject source)
     {
-        foreach(Transform child in source.transform)
+        foreach (Transform child in source.transform)
         {
             checkpoints.Add(child.gameObject);
             child.gameObject.SetActive(false);
@@ -73,9 +73,7 @@ public class CheckpointManagerScript : MonoBehaviour
 
     public void OnCheckpointReached()
     {
-
-        SoundsManagerScript.soundsManager.PlayCheckPointMusic();
-
+        PlayCheckPointSound();
         if (IsLastCheckpointReached())
         {
             OnLastCheckpointReached();
@@ -97,5 +95,10 @@ public class CheckpointManagerScript : MonoBehaviour
     void OnLastCheckpointReached()
     {
         GameManager.gameManager.OnRaceFinished();
+    }
+
+    public void PlayCheckPointSound()
+    {
+        checkPointSource.Play();
     }
 }

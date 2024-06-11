@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CarMovement : MonoBehaviour
 {
@@ -35,6 +36,19 @@ public class CarMovement : MonoBehaviour
     public float animatedCurveValue;
     public bool isControlEnabled = false;
 
+    public static CarMovement carMovement { get; private set; }
+
+    private void Awake()
+    {
+        if (carMovement != null && carMovement != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            carMovement = this;
+        }
+    }
 
     void Start()
     {
@@ -69,9 +83,27 @@ public class CarMovement : MonoBehaviour
         }
         else
         {
-            m_horizontalInput = Input.GetAxis("Horizontal");
-            m_verticalInput = Input.GetAxis("Vertical");
+            // m_horizontalInput = Input.GetAxis("Horizontal");
+            // m_verticalInput = Input.GetAxis("Vertical");
+
+            m_horizontalInput = Joystick.joystick.Horizontal;
+            //m_verticalInput = Joystick.joystick.Vertical;
         }
+    }
+
+    public void SetMoveToDefault()
+    {
+        m_verticalInput = 0f;
+    }
+
+    public void MoveForward()
+    {
+        m_verticalInput = 1f;
+    }
+
+    public void MoveBackward()
+    {
+        m_verticalInput = -1f;
     }
 
     public void EnableInput(bool enabled)

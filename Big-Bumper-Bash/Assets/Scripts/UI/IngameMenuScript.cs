@@ -48,7 +48,7 @@ public class IngameMenuScript : MonoBehaviour
     {
         foreach (Transform child in parent.transform)
         {
-            if(child.TryGetComponent(out Button btn))
+            if (child.TryGetComponent(out Button btn))
             {
                 btn.Select();
                 break;
@@ -104,8 +104,10 @@ public class IngameMenuScript : MonoBehaviour
                 SelectFirstButton(menuChild.gameObject);
                 break;
             }
+
             StopGameTime(true);
         }
+
         isMenuOpen = !isMenuOpen;
     }
 

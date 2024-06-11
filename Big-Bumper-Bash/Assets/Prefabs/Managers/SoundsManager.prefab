@@ -45,15 +45,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5cd8dd1f78e80b44a80316d4f98f471, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainMusic: {fileID: 9041000872949828499}
-  loadedTrackChoice: 3
-  menuMusic: {fileID: 8300000, guid: 3e13d014c67c01b46a3492ccf85adf8c, type: 3}
-  snowMapMusic: {fileID: 8300000, guid: c0a7335735bcfd94c95626768aef8d94, type: 3}
-  constructionMapMusic: {fileID: 8300000, guid: 127de10035d79204496a2ea269164a27, type: 3}
-  testTracMusic: {fileID: 0}
-  checkPointMusic: {fileID: 8300000, guid: 39e4dc77a1ca8f9438602f1d5bdc5a90, type: 3}
-  volume: 0
+  mainMusicSource: {fileID: 9041000872949828499}
   AudioMixerPrefab: {fileID: 24100000, guid: 64e7e62469f33d44c8d6fed26af4d19c, type: 2}
+  mainMenuClip: {fileID: 8300000, guid: 3e13d014c67c01b46a3492ccf85adf8c, type: 3}
+  snowMapClip: {fileID: 8300000, guid: c0a7335735bcfd94c95626768aef8d94, type: 3}
+  constructionMapMusicClip: {fileID: 8300000, guid: 127de10035d79204496a2ea269164a27, type: 3}
+  testTracMusicClip: {fileID: 0}
+  checkPointClip: {fileID: 8300000, guid: 39e4dc77a1ca8f9438602f1d5bdc5a90, type: 3}
+  masterVolumeSlider: {fileID: 0}
+  mainMusicVolumeSlider: {fileID: 0}
+  soundEffectsVolumeSlider: {fileID: 0}
+  volume: 0
 --- !u!82 &9041000872949828499
 AudioSource:
   m_ObjectHideFlags: 0

@@ -28,7 +28,6 @@ public class MenuManager : MonoBehaviour
     }
     private void Start()
     {
-       
         SoundsManagerScript.soundsManager.PlayMenuMusic();
     }
     private void Update()

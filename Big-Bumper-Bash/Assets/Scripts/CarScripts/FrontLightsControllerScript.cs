@@ -8,6 +8,19 @@ public class FrontLightsControllerScript : MonoBehaviour
     private Material material;
     private Color init;
     private Renderer rendererR;
+    public static FrontLightsControllerScript frontLightsController { get; private set; }
+
+    private void Awake()
+    {
+        if (frontLightsController != null && frontLightsController != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            frontLightsController = this;
+        }
+    }
 
     void Start()
     {
@@ -40,6 +53,21 @@ public class FrontLightsControllerScript : MonoBehaviour
         }
     }
 
+    public void ToggleLightsOnButton()
+    {
+        lightsOn = !lightsOn;
+        SetLightsActiveStatus(lightsOn);
+
+
+        if (lightsOn)
+        {
+            material.SetColor("_EmissionColor", new Color(2.0f, 2f, 0f, 0.0f));
+        }
+        else
+        {
+            material.SetColor("_EmissionColor", init);
+        }
+    }
 
     void SetLightsActiveStatus(bool isActive)
     {
