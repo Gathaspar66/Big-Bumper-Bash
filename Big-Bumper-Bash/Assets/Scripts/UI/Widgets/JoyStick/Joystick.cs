@@ -5,7 +5,9 @@ public class Joystick : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoint
 {
     public RectTransform Background;
     public RectTransform Handle;
+    public RectTransform wheel;
     private Vector2 inputVector = Vector2.zero;
+    [SerializeField]
 
     private Vector2 initialTouchPosition = Vector2.zero;
 
@@ -23,7 +25,7 @@ public class Joystick : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoint
         }
     }
 
-
+    
     public void OnPointerDown(PointerEventData eventData)
     {
         Background.gameObject.SetActive(true);
@@ -49,6 +51,7 @@ public class Joystick : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoint
         inputVector = new Vector2(inputVector.x, 0f); // Constrain the joystick to horizontal movement
 
         Handle.anchoredPosition = inputVector * joystickRadius; // Move the handle based on the input
+        UpdateWheelRotation(inputVector.x);
     }
 
 
@@ -59,6 +62,10 @@ public class Joystick : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoint
         Handle.anchoredPosition = Vector2.zero; // Reset the handle position
     }
 
+    void UpdateWheelRotation(float value)
+    {
+        wheel.rotation = Quaternion.Euler(new Vector3(0, 0, -value * 70));
+    }
 
     public float Horizontal
     {
