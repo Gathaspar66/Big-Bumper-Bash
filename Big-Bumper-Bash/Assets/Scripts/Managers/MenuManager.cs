@@ -14,6 +14,9 @@ public class MenuManager : MonoBehaviour
     float cameraMovementLerp = 0;
     bool moveCamera = false;
     public GameObject SoundsManagerPrefab;
+
+    public List<RectTransform> menuPanels = new();
+    public float targetSize = 0.8f; //by options menu being the tallest column
     
     private void Awake()
     {
@@ -29,6 +32,7 @@ public class MenuManager : MonoBehaviour
     private void Start()
     {
         SoundsManagerScript.soundsManager.PlayMenuMusic();
+        RecalculateMenuScale();
     }
     private void Update()
     {
@@ -119,5 +123,21 @@ public class MenuManager : MonoBehaviour
     public void LoadRace()
     {
         TrackLoader.LoadTrack();
+    }
+
+    public void RecalculateMenuScale()
+    {
+        int currentScreenHeight = Screen.height;
+        int optionsBackPanelHeight = 600;
+        float targetScale = currentScreenHeight * targetSize / optionsBackPanelHeight;
+        /*foreach (RectTransform i in menuPanels)
+        {
+            i.localScale = Vector3.one * targetScale;
+        }*/
+
+        foreach (Transform menuChild in transform)
+        {
+            menuChild.GetComponent<RectTransform>().localScale = Vector3.one * targetScale;
+        }
     }
 }
